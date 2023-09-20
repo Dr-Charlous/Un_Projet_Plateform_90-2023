@@ -37,6 +37,7 @@ public class Teleport : MonoBehaviour
     void Teleportation()
     {
         TpPointPivot.transform.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward);
+        TpPointPivot.transform.Rotate(TpPointPivot.transform.rotation.x, TpPointPivot.transform.rotation.y, -90);
 
         if (Input.GetMouseButtonDown(0))
         {
