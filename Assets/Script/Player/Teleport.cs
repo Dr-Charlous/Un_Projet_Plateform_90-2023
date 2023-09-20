@@ -2,29 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Teleport : MonoBehaviour
 {
-    public GameObject Cursor;
+    public GameObject Player;
+    public GameObject TpPointPivot;
     public Collider2D CursorCollider;
     public float Range;
-    public LayerMask Ground;
+    public LayerMask Layer;
+
+    private void Start()
+    {
+        DistanceTeleport();
+    }
 
     private void Update()
     {
         Teleportation();
     }
 
+    void DistanceTeleport()
+    {
+        //if (Range == TpPointPivot.transform.localPosition.x)
+        //{
+        //    return;
+        //}
+        //else
+        //{
+            transform.localPosition = Vector3.left * Range;
+        //}
+    }
+
     void Teleportation()
     {
-        Cursor.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
+        TpPointPivot.transform.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Player.transform.position = gameObject.transform.position;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.transform == Cursor.transform)
+        if (collision.IsTouchingLayers(Layer))
         {
-            //Cursor.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.1f));
+            //TpPointPivot.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.1f));
             Debug.Log("prout");
         }
     }
