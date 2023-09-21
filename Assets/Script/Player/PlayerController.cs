@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -18,6 +19,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _groundOffset;
     [SerializeField] float _groundRadius;
     [SerializeField] LayerMask _GroundLayer;
+    [SerializeField] Collider2D[] _collidersGround;
+    public string _tagGround;
+    [SerializeField] bool _isGrounded;
 
     [Header("Jump")]
     [SerializeField] float _timerMinBetweenJump;
@@ -26,13 +30,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] [Tooltip("Gravity when the player goes up and press jump")] float _gravityUpJump;
     [SerializeField] [Tooltip("Gravity otherwise")] float _gravity;
     [SerializeField] float _jumpInputTimer = 0.1f;
-
-
-    [SerializeField] Collider2D[] _collidersGround;
-    [SerializeField] bool _isGrounded;
     [SerializeField] float _timerNoJump;
     [SerializeField] float _timerSinceJumpPressed;
     [SerializeField] float _TimeSinceGrounded;
+
+    [Header("Anim")]
+    public GameObject PlayerMesh;
+
+    [Header("Idk")]
     [SerializeField] float _coyoteTime;
     [SerializeField] float _slopeDetectOffset;
     [SerializeField] bool _isOnSlope;
@@ -53,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        AnimPlayer();
         HandleMovements();
         HandleGrounded();
         HandleJump();
@@ -81,13 +87,13 @@ public class PlayerController : MonoBehaviour
         _rb.velocity = Vector2.MoveTowards(velocity, wantedVelocity, _acceleration * Time.deltaTime);
     }
 
-    //Vector2 _point;
+    Vector2 point;
 
     void HandleGrounded()
     {
         _TimeSinceGrounded += Time.deltaTime;
 
-        Vector2 point = transform.position + Vector3.up * _groundOffset;
+        point = transform.position + Vector3.up * _groundOffset;
         bool currentGrounded = Physics2D.OverlapCircleNonAlloc(point, _groundRadius, _collidersGround, _GroundLayer) > 0;
 
         if (currentGrounded == false && _isGrounded)
@@ -99,12 +105,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireSphere(_point, _groundRadius);
-    //    Gizmos.color = Color.white;
-    //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(point, _groundRadius);
+        Gizmos.color = Color.white;
+    }
 
 
     void HandleJump()
@@ -188,5 +194,11 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    void AnimPlayer()
+    {
+        if (_inputs.x != 0)
+            PlayerMesh.transform.localScale = new Vector3(_inputs.x, PlayerMesh.transform.localScale.y, PlayerMesh.transform.localScale.z);
     }
 }

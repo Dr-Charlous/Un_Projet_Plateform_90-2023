@@ -10,47 +10,47 @@ public class Teleport : MonoBehaviour
     public GameObject TpPointPivot;
     public Collider2D CursorCollider;
     public float Range;
+    public float CooldownTeleport;
+    public float TimeSinceTeleport;
+    public bool CanTeleport;
     public LayerMask Layer;
 
     private void Start()
     {
-        DistanceTeleport();
+        transform.localPosition = Vector3.left * Range;
+
+        TimeSinceTeleport = CooldownTeleport;
     }
 
     private void Update()
     {
         Teleportation();
-    }
 
-    void DistanceTeleport()
-    {
-        //if (Range == TpPointPivot.transform.localPosition.x)
-        //{
-        //    return;
-        //}
-        //else
-        //{
-            transform.localPosition = Vector3.left * Range;
-        //}
+        if (CursorCollider.IsTouchingLayers(Layer))
+        {
+            CanTeleport = false;
+            return;
+        }
+        else
+        {
+            CanTeleport = true;
+        }
     }
 
     void Teleportation()
     {
-        TpPointPivot.transform.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward);
-        TpPointPivot.transform.Rotate(TpPointPivot.transform.rotation.x, TpPointPivot.transform.rotation.y, -90);
+        TimeSinceTeleport += Time.deltaTime;
 
-        if (Input.GetMouseButtonDown(0))
+        //TpPointPivot.transform.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward);
+        Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - TpPointPivot.transform.position;
+        diff.Normalize();
+        float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        TpPointPivot.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 180);
+
+        if (Input.GetMouseButtonDown(0) && TimeSinceTeleport > CooldownTeleport && CanTeleport)
         {
             Player.transform.position = gameObject.transform.position;
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.IsTouchingLayers(Layer))
-        {
-            //TpPointPivot.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.1f));
-            Debug.Log("prout");
+            TimeSinceTeleport = 0;
         }
     }
 }
