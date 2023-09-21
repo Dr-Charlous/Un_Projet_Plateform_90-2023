@@ -623,6 +623,7 @@ MonoBehaviour:
   _collider: {fileID: 2218810419529784912}
   _physicsFriction: {fileID: 6200000, guid: e04890dc7a529604582bfb42453c496c, type: 2}
   _physicsNoFriction: {fileID: 6200000, guid: 5543467fd0c479a4b84f2cc0ad815a4b, type: 2}
+  NumberTeleport: 1
 --- !u!1 &7266264374733870759
 GameObject:
   m_ObjectHideFlags: 0

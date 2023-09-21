@@ -47,10 +47,11 @@ public class Teleport : MonoBehaviour
         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         TpPointPivot.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 180);
 
-        if (Input.GetMouseButtonDown(0) && TimeSinceTeleport > CooldownTeleport && CanTeleport)
+        if (Input.GetMouseButtonDown(0) && TimeSinceTeleport > CooldownTeleport && CanTeleport && Player.GetComponent<PlayerController>().NumberTeleport > 0)
         {
             Player.transform.position = gameObject.transform.position;
             TimeSinceTeleport = 0;
+            Player.GetComponent<PlayerController>().NumberTeleport -= 1;
         }
     }
 }
