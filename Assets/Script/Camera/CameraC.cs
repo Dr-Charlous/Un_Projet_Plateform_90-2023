@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CameraC : MonoBehaviour
 {
@@ -14,11 +15,14 @@ public class CameraC : MonoBehaviour
     {
         if (Up.GetComponent<Collider2D>().IsTouching(Player))
         {
-            Camera.position = new Vector3(Camera.position.x, Camera.position.y + Range, Camera.position.z);
+            //Camera.position = new Vector3(Camera.position.x, Camera.position.y + Range, Camera.position.z);
+            Camera.DOMove(new Vector3(Camera.position.x, Camera.position.y + Range, Camera.position.z), 2, true);
         }
-        else if(Down.GetComponent<Collider2D>().IsTouching(Player))
+        
+        if(Down.GetComponent<Collider2D>().IsTouching(Player))
         {
-            Camera.position = new Vector3(Camera.position.x, Camera.position.y - Range, Camera.position.z);
+            //Camera.position = new Vector3(Camera.position.x, Camera.position.y - Range, Camera.position.z);
+            Camera.DOMove(new Vector3(Camera.position.x, Camera.position.y + Range, Camera.position.z), 2, true);
         }
     }
 }
