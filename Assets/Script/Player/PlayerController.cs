@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     RaycastHit2D[] _hitResults = new RaycastHit2D[2];
     float[] directions = new float[] { 1, -1 };
 
+    public int NumberTeleport = 1;
+
     private void Update()
     {
         HandleInputs();
@@ -99,6 +101,11 @@ public class PlayerController : MonoBehaviour
         if (currentGrounded == false && _isGrounded)
         {
             _TimeSinceGrounded = 0;
+        }
+
+        if (_isGrounded && NumberTeleport <= 0)
+        {
+            NumberTeleport = 1;
         }
 
         _isGrounded = currentGrounded;
