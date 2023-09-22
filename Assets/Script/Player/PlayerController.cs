@@ -63,12 +63,14 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         _input.Enable();
-        //_input.Player.Move += ;
+        _input.Player.Move.performed += GetMoveInputs;
+
+        _input.Player.Jump.performed += GetJumpInputs;
     }
 
     private void Update()
     {
-        HandleInputs();
+        //HandleInputs();
     }
 
     private void FixedUpdate()
@@ -83,8 +85,8 @@ public class PlayerController : MonoBehaviour
 
     void HandleInputs()
     {
-        _inputs.x = Input.GetAxisRaw("Horizontal");
-        _inputs.y = Input.GetAxisRaw("Vertical");
+        //_inputs.x = Input.GetAxisRaw("Horizontal");
+        //_inputs.y = Input.GetAxisRaw("Vertical");
 
         _inputJump = Input.GetKey(KeyCode.UpArrow);
 
@@ -93,6 +95,16 @@ public class PlayerController : MonoBehaviour
             _timerSinceJumpPressed = 0;
         }
 
+    }
+
+    void GetMoveInputs(InputAction.CallbackContext move)
+    {
+        _inputs = move.ReadValue<Vector2>();
+    }
+
+    void GetJumpInputs(InputAction.CallbackContext jump)
+    {
+        _inputJump = true;
     }
 
     void HandleMovements()
