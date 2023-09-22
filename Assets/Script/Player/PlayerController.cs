@@ -4,12 +4,14 @@ using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Vector2 _inputs;
     [SerializeField] bool _inputJump;
     [SerializeField] Rigidbody2D _rb;
+    private PlayerInputs _input;
 
     [Header("Movements")]
     [SerializeField] float _walkSpeed;
@@ -52,6 +54,17 @@ public class PlayerController : MonoBehaviour
     float[] directions = new float[] { 1, -1 };
 
     public int NumberTeleport = 1;
+
+    private void Awake()
+    {
+        _input = new PlayerInputs();
+    }
+
+    private void OnEnable()
+    {
+        _input.Enable();
+        //_input.Player.Move += ;
+    }
 
     private void Update()
     {
