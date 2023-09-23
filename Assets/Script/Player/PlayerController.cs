@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //HandleInputs();
+        HandleInputs();
     }
 
     private void FixedUpdate()
@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviour
         HandleCorners();
     }
 
+    #region inputs
     void HandleInputs()
     {
         //_inputs.x = Input.GetAxisRaw("Horizontal");
@@ -106,7 +107,9 @@ public class PlayerController : MonoBehaviour
     {
         _inputJump = true;
     }
+    #endregion
 
+    #region move ground n jump
     void HandleMovements()
     {
         var velocity = _rb.velocity;
@@ -178,7 +181,9 @@ public class PlayerController : MonoBehaviour
             _timerNoJump = _timerMinBetweenJump;
         }
     }
+    #endregion
 
+    #region slope n corner
     void HandleSlope()
     {
         Vector3 origin = transform.position + Vector3.up * _groundOffset;
@@ -227,10 +232,19 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+#endregion
 
     void AnimPlayer()
     {
         if (_inputs.x != 0)
-            PlayerMesh.transform.localScale = new Vector3(_inputs.x, PlayerMesh.transform.localScale.y, PlayerMesh.transform.localScale.z);
+        {
+            int side = 0;
+            if (_inputs.x < 0)
+                side = -1;
+            else
+                side = 1;
+
+            PlayerMesh.transform.localScale = new Vector3(side, PlayerMesh.transform.localScale.y, PlayerMesh.transform.localScale.z);
+        }
     }
 }
