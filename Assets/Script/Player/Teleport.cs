@@ -25,6 +25,7 @@ public class Teleport : MonoBehaviour
     private void Update()
     {
         CanTeleportHere();
+        CursorTeleport();
         Teleportation();
     }
 
@@ -41,15 +42,30 @@ public class Teleport : MonoBehaviour
         }
     }
 
-    public void Teleportation()
+    public void CursorTeleport()
     {
-        TimeSinceTeleport += Time.deltaTime;
+        Vector3 CursorInput = Vector3.zero;
+
+        if (Player.GetComponent<PlayerController>().IsGamepad) 
+        {
+            CursorInput = Player.transform.position + (Vector3)Player.GetComponent<PlayerController>()._cursor;
+        }
+        else
+        {
+            CursorInput = (Vector3)Player.GetComponent<PlayerController>()._cursor;
+        }
+
 
         //TpPointPivot.transform.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward);
-        Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - TpPointPivot.transform.position;
+        Vector3 diff = CursorInput - TpPointPivot.transform.position;
         diff.Normalize();
         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         TpPointPivot.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 180);
+    }
+
+    public void Teleportation()
+    {
+        TimeSinceTeleport += Time.deltaTime;
 
         if (Player.GetComponent<PlayerController>().teleportationClick && TimeSinceTeleport > CooldownTeleport && CanTeleport && Player.GetComponent<PlayerController>().NumberTeleport > 0)
         {

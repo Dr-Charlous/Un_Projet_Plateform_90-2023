@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
     public Teleport _teleport;
     private PlayerInputs _input;
     public bool teleportationClick;
+    public Vector2 _cursor;
+    public bool IsGamepad;
 
     private void Awake()
     {
@@ -66,6 +68,9 @@ public class PlayerController : MonoBehaviour
     {
         _input.Enable();
         _input.Player.Move.performed += GetMoveInputs;
+        _input.Player.CursorGamepad.performed += GetCursorInputsGamepad;
+        _input.Player.CursorMouse.performed += GetCursorInputsMouse;
+
         _input.Player.Jump.performed += GetJumpInputs;
         _input.Player.Teleportation.performed += GetShootInputs;
     }
@@ -74,6 +79,9 @@ public class PlayerController : MonoBehaviour
     {
         _input.Disable();
         _input.Player.Move.performed -= GetMoveInputs;
+        _input.Player.CursorGamepad.performed -= GetCursorInputsGamepad;
+        _input.Player.CursorMouse.performed -= GetCursorInputsMouse;
+
         _input.Player.Jump.performed -= GetJumpInputs;
         _input.Player.Teleportation.performed -= GetShootInputs;
     }
@@ -82,6 +90,18 @@ public class PlayerController : MonoBehaviour
     void GetMoveInputs(InputAction.CallbackContext move)
     {
         _inputs = move.ReadValue<Vector2>();
+    }
+    
+    void GetCursorInputsGamepad(InputAction.CallbackContext cursor)
+    {
+        _cursor = cursor.ReadValue<Vector2>();
+        IsGamepad = true;
+    }
+    
+    void GetCursorInputsMouse(InputAction.CallbackContext cursor)
+    {
+        _cursor = Camera.main.ScreenToWorldPoint(cursor.ReadValue<Vector2>());
+        IsGamepad = false;
     }
 
     void GetJumpInputs(InputAction.CallbackContext jump)

@@ -1171,17 +1171,6 @@ Transform:
   m_Father: {fileID: 2063903724}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2021878472 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7511669469647589275, guid: 90f7645739d2ac543adeb9a1e0e68a09, type: 3}
-  m_PrefabInstance: {fileID: 5201702815956670558}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87d5f535a84caad4d8d52714fe0fc8b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2063903723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,14 +1337,6 @@ PrefabInstance:
       propertyPath: teleport
       value: 
       objectReference: {fileID: 5305329373134516129, guid: c5962f7c346ee534483bf65788462baa, type: 3}
-    - target: {fileID: 3730371163513553219, guid: 90f7645739d2ac543adeb9a1e0e68a09, type: 3}
-      propertyPath: _teleport
-      value: 
-      objectReference: {fileID: 2021878472}
-    - target: {fileID: 3730371163513553219, guid: 90f7645739d2ac543adeb9a1e0e68a09, type: 3}
-      propertyPath: NumberTeleport
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4076971027341105615, guid: 90f7645739d2ac543adeb9a1e0e68a09, type: 3}
       propertyPath: m_Name
       value: Player

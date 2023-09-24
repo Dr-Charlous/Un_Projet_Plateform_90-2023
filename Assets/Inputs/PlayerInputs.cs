@@ -53,6 +53,24 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CursorGamepad"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""9d653189-8bd8-4be1-a20a-0cd59adcec28"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CursorMouse"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""71d74a8e-8e0f-4691-81a5-c03a148fd222"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -286,6 +304,72 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Teleportation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""GamePad"",
+                    ""id"": ""402ccd5c-c78a-4c87-becc-f081d67e2d1b"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CursorGamepad"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""d548a5ed-0e9e-426c-a33a-9bafad30f679"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""CursorGamepad"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""bc5ef57d-7321-4e9f-83c2-18e3a5fc0cda"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""CursorGamepad"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""91b5c468-f2d6-47d9-8b2a-bdbd6f16ae77"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""CursorGamepad"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""08c31a2a-ceff-4df8-9573-e032e157e91f"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""CursorGamepad"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce768141-e5d4-479f-81ea-a8cd6229f93a"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""CursorMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -303,6 +387,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Teleportation = m_Player.FindAction("Teleportation", throwIfNotFound: true);
+        m_Player_CursorGamepad = m_Player.FindAction("CursorGamepad", throwIfNotFound: true);
+        m_Player_CursorMouse = m_Player.FindAction("CursorMouse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -367,6 +453,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Teleportation;
+    private readonly InputAction m_Player_CursorGamepad;
+    private readonly InputAction m_Player_CursorMouse;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -374,6 +462,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Teleportation => m_Wrapper.m_Player_Teleportation;
+        public InputAction @CursorGamepad => m_Wrapper.m_Player_CursorGamepad;
+        public InputAction @CursorMouse => m_Wrapper.m_Player_CursorMouse;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -392,6 +482,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Teleportation.started += instance.OnTeleportation;
             @Teleportation.performed += instance.OnTeleportation;
             @Teleportation.canceled += instance.OnTeleportation;
+            @CursorGamepad.started += instance.OnCursorGamepad;
+            @CursorGamepad.performed += instance.OnCursorGamepad;
+            @CursorGamepad.canceled += instance.OnCursorGamepad;
+            @CursorMouse.started += instance.OnCursorMouse;
+            @CursorMouse.performed += instance.OnCursorMouse;
+            @CursorMouse.canceled += instance.OnCursorMouse;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -405,6 +501,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Teleportation.started -= instance.OnTeleportation;
             @Teleportation.performed -= instance.OnTeleportation;
             @Teleportation.canceled -= instance.OnTeleportation;
+            @CursorGamepad.started -= instance.OnCursorGamepad;
+            @CursorGamepad.performed -= instance.OnCursorGamepad;
+            @CursorGamepad.canceled -= instance.OnCursorGamepad;
+            @CursorMouse.started -= instance.OnCursorMouse;
+            @CursorMouse.performed -= instance.OnCursorMouse;
+            @CursorMouse.canceled -= instance.OnCursorMouse;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -436,5 +538,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnTeleportation(InputAction.CallbackContext context);
+        void OnCursorGamepad(InputAction.CallbackContext context);
+        void OnCursorMouse(InputAction.CallbackContext context);
     }
 }
