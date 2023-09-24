@@ -53,7 +53,9 @@ public class PlayerController : MonoBehaviour
     float[] directions = new float[] { 1, -1 };
 
     public int NumberTeleport = 1;
+    public Teleport _teleport;
     private PlayerInputs _input;
+    public bool teleportationClick;
 
     private void Awake()
     {
@@ -64,16 +66,16 @@ public class PlayerController : MonoBehaviour
     {
         _input.Enable();
         _input.Player.Move.performed += GetMoveInputs;
-
         _input.Player.Jump.performed += GetJumpInputs;
+        _input.Player.Teleportation.performed += GetShootInputs;
     }
 
     private void OnDisable()
     {
         _input.Disable();
         _input.Player.Move.performed -= GetMoveInputs;
-
         _input.Player.Jump.performed -= GetJumpInputs;
+        _input.Player.Teleportation.performed -= GetShootInputs;
     }
 
     #region inputs
@@ -88,24 +90,29 @@ public class PlayerController : MonoBehaviour
         _timerSinceJumpPressed = 0;
     }
 
-    void HandleInputs()
+    void GetShootInputs(InputAction.CallbackContext tp)
     {
-        //_inputs.x = Input.GetAxisRaw("Horizontal");
-        //_inputs.y = Input.GetAxisRaw("Vertical");
-
-        _inputJump = Input.GetKey(KeyCode.UpArrow);
-
-        if (_inputJump)
-        {
-            _timerSinceJumpPressed = 0;
-        }
-
+        teleportationClick = true;
     }
 
-    private void Update()
-    {
-        //HandleInputs();
-    }
+    //void HandleInputs()
+    //{
+    //    _inputs.x = Input.GetAxisRaw("Horizontal");
+    //    _inputs.y = Input.GetAxisRaw("Vertical");
+
+    //    _inputJump = Input.GetKey(KeyCode.UpArrow);
+
+    //    if (_inputJump)
+    //    {
+    //        _timerSinceJumpPressed = 0;
+    //    }
+
+    //}
+
+    //private void Update()
+    //{
+    //    HandleInputs();
+    //}
 
     private void FixedUpdate()
     {
