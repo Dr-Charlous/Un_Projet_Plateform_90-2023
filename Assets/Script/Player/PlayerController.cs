@@ -4,6 +4,7 @@ using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -52,11 +53,86 @@ public class PlayerController : MonoBehaviour
     float[] directions = new float[] { 1, -1 };
 
     public int NumberTeleport = 1;
+    public Teleport _teleport;
+    private PlayerInputs _input;
+    public bool teleportationClick;
+    public Vector2 _cursor;
+    public bool IsGamepad;
 
-    private void Update()
+    private void Awake()
     {
-        HandleInputs();
+        _input = new PlayerInputs();
     }
+
+    private void OnEnable()
+    {
+        _input.Enable();
+        _input.Player.Move.performed += GetMoveInputs;
+        _input.Player.CursorGamepad.performed += GetCursorInputsGamepad;
+        _input.Player.CursorMouse.performed += GetCursorInputsMouse;
+
+        _input.Player.Jump.performed += GetJumpInputs;
+        _input.Player.Teleportation.performed += GetShootInputs;
+    }
+
+    private void OnDisable()
+    {
+        _input.Disable();
+        _input.Player.Move.performed -= GetMoveInputs;
+        _input.Player.CursorGamepad.performed -= GetCursorInputsGamepad;
+        _input.Player.CursorMouse.performed -= GetCursorInputsMouse;
+
+        _input.Player.Jump.performed -= GetJumpInputs;
+        _input.Player.Teleportation.performed -= GetShootInputs;
+    }
+
+    #region inputs
+    void GetMoveInputs(InputAction.CallbackContext move)
+    {
+        _inputs = move.ReadValue<Vector2>();
+    }
+    
+    void GetCursorInputsGamepad(InputAction.CallbackContext cursor)
+    {
+        _cursor = cursor.ReadValue<Vector2>();
+        IsGamepad = true;
+    }
+    
+    void GetCursorInputsMouse(InputAction.CallbackContext cursor)
+    {
+        _cursor = Camera.main.ScreenToWorldPoint(cursor.ReadValue<Vector2>());
+        IsGamepad = false;
+    }
+
+    void GetJumpInputs(InputAction.CallbackContext jump)
+    {
+        _inputJump = true;
+        _timerSinceJumpPressed = 0;
+    }
+
+    void GetShootInputs(InputAction.CallbackContext tp)
+    {
+        teleportationClick = true;
+    }
+
+    //void HandleInputs()
+    //{
+    //    _inputs.x = Input.GetAxisRaw("Horizontal");
+    //    _inputs.y = Input.GetAxisRaw("Vertical");
+
+    //    _inputJump = Input.GetKey(KeyCode.UpArrow);
+
+    //    if (_inputJump)
+    //    {
+    //        _timerSinceJumpPressed = 0;
+    //    }
+
+    //}
+
+    //private void Update()
+    //{
+    //    HandleInputs();
+    //}
 
     private void FixedUpdate()
     {
@@ -67,21 +143,9 @@ public class PlayerController : MonoBehaviour
         HandleSlope();
         HandleCorners();
     }
+    #endregion
 
-    void HandleInputs()
-    {
-        _inputs.x = Input.GetAxisRaw("Horizontal");
-        _inputs.y = Input.GetAxisRaw("Vertical");
-
-        _inputJump = Input.GetKey(KeyCode.UpArrow);
-
-        if (_inputJump)
-        {
-            _timerSinceJumpPressed = 0;
-        }
-
-    }
-
+    #region move ground n jump
     void HandleMovements()
     {
         var velocity = _rb.velocity;
@@ -152,8 +216,15 @@ public class PlayerController : MonoBehaviour
             _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
             _timerNoJump = _timerMinBetweenJump;
         }
-    }
 
+        if (!_input.Player.Jump.IsPressed())
+        {
+            _inputJump = false;
+        }
+    }
+    #endregion
+
+    #region slope n corner
     void HandleSlope()
     {
         Vector3 origin = transform.position + Vector3.up * _groundOffset;
@@ -202,10 +273,19 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+#endregion
 
     void AnimPlayer()
     {
         if (_inputs.x != 0)
-            PlayerMesh.transform.localScale = new Vector3(_inputs.x, PlayerMesh.transform.localScale.y, PlayerMesh.transform.localScale.z);
+        {
+            int side = 0;
+            if (_inputs.x < 0)
+                side = -1;
+            else
+                side = 1;
+
+            PlayerMesh.transform.localScale = new Vector3(side, PlayerMesh.transform.localScale.y, PlayerMesh.transform.localScale.z);
+        }
     }
 }
