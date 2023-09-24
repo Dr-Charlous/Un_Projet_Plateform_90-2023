@@ -1326,6 +1326,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3730371163513553219, guid: 90f7645739d2ac543adeb9a1e0e68a09, type: 3}
+      propertyPath: jump
+      value: 
+      objectReference: {fileID: -3549213371039441258, guid: c5962f7c346ee534483bf65788462baa, type: 3}
+    - target: {fileID: 3730371163513553219, guid: 90f7645739d2ac543adeb9a1e0e68a09, type: 3}
+      propertyPath: move
+      value: 
+      objectReference: {fileID: -1680190386980627800, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+    - target: {fileID: 3730371163513553219, guid: 90f7645739d2ac543adeb9a1e0e68a09, type: 3}
+      propertyPath: teleport
+      value: 
+      objectReference: {fileID: 5305329373134516129, guid: c5962f7c346ee534483bf65788462baa, type: 3}
+    - target: {fileID: 3730371163513553219, guid: 90f7645739d2ac543adeb9a1e0e68a09, type: 3}
       propertyPath: NumberTeleport
       value: 1
       objectReference: {fileID: 0}

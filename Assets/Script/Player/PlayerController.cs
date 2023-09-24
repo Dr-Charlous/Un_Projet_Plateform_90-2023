@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Vector2 _inputs;
     [SerializeField] bool _inputJump;
     [SerializeField] Rigidbody2D _rb;
-    private PlayerInputs _input;
 
     [Header("Movements")]
     [SerializeField] float _walkSpeed;
@@ -54,6 +53,7 @@ public class PlayerController : MonoBehaviour
     float[] directions = new float[] { 1, -1 };
 
     public int NumberTeleport = 1;
+    private PlayerInputs _input;
 
     private void Awake()
     {
@@ -68,22 +68,26 @@ public class PlayerController : MonoBehaviour
         _input.Player.Jump.performed += GetJumpInputs;
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        HandleInputs();
-    }
+        _input.Disable();
+        _input.Player.Move.performed -= GetMoveInputs;
 
-    private void FixedUpdate()
-    {
-        AnimPlayer();
-        HandleMovements();
-        HandleGrounded();
-        HandleJump();
-        HandleSlope();
-        HandleCorners();
+        _input.Player.Jump.performed -= GetJumpInputs;
     }
 
     #region inputs
+    void GetMoveInputs(InputAction.CallbackContext move)
+    {
+        _inputs = move.ReadValue<Vector2>();
+    }
+
+    void GetJumpInputs(InputAction.CallbackContext jump)
+    {
+        _inputJump = true;
+        _timerSinceJumpPressed = 0;
+    }
+
     void HandleInputs()
     {
         //_inputs.x = Input.GetAxisRaw("Horizontal");
@@ -98,14 +102,19 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void GetMoveInputs(InputAction.CallbackContext move)
+    private void Update()
     {
-        _inputs = move.ReadValue<Vector2>();
+        //HandleInputs();
     }
 
-    void GetJumpInputs(InputAction.CallbackContext jump)
+    private void FixedUpdate()
     {
-        _inputJump = true;
+        AnimPlayer();
+        HandleMovements();
+        HandleGrounded();
+        HandleJump();
+        HandleSlope();
+        HandleCorners();
     }
     #endregion
 
@@ -179,6 +188,11 @@ public class PlayerController : MonoBehaviour
         {
             _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
             _timerNoJump = _timerMinBetweenJump;
+        }
+
+        if (!_input.Player.Jump.IsPressed())
+        {
+            _inputJump = false;
         }
     }
     #endregion
