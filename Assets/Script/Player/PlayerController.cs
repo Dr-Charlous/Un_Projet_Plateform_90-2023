@@ -124,6 +124,8 @@ public class PlayerController : MonoBehaviour
         {
             _cursor = Camera.main.ScreenToWorldPoint(_input.Player.CursorMouse.ReadValue<Vector2>());
         }
+
+        teleportationClick = false;
     }
 
     private void Update()

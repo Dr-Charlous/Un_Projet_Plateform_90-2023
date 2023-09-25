@@ -1207,6 +1207,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: _collidersGround.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: _collidersGround.Array.data[0]
+      value: 
+      objectReference: {fileID: 1132905169}
+    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: _collidersGround.Array.data[1]
+      value: 
+      objectReference: {fileID: 116718411}
+    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: _collidersGround.Array.data[2]
+      value: 
+      objectReference: {fileID: 741963175}
+    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: _collidersGround.Array.data[3]
+      value: 
+      objectReference: {fileID: 202571038}
+    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: _collidersGround.Array.data[4]
+      value: 
+      objectReference: {fileID: 1377259336}
+    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: _collidersGround.Array.data[5]
+      value: 
+      objectReference: {fileID: 447134788}
     - target: {fileID: 5152239649372325255, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: m_Name
       value: Player
