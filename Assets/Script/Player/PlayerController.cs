@@ -63,6 +63,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _input = new PlayerInputs();
+
+        UnityEngine.Cursor.visible = false;
     }
 
     private void OnEnable()
