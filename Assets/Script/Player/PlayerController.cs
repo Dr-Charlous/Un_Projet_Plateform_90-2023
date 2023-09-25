@@ -118,11 +118,11 @@ public class PlayerController : MonoBehaviour
 
     void HandleInputs()
     {
-        if (IsGamepad)
+        if (IsGamepad && _input.Player.CursorGamepad.ReadValue<Vector2>() != Vector2.zero)
         {
             _cursor = _input.Player.CursorGamepad.ReadValue<Vector2>();
         }
-        else
+        else if (!IsGamepad)
         {
             _cursor = Camera.main.ScreenToWorldPoint(_input.Player.CursorMouse.ReadValue<Vector2>());
         }

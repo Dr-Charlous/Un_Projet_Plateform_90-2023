@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputs: {x: 0, y: 0}
   _inputJump: 0
-  _rb: {fileID: 0}
+  _rb: {fileID: 7100082430801691380}
   _walkSpeed: 11
   _acceleration: 10
   _groundOffset: -0.8
@@ -294,15 +294,15 @@ MonoBehaviour:
   _timerNoJump: 0
   _timerSinceJumpPressed: 0
   _TimeSinceGrounded: 0
-  PlayerMesh: {fileID: 0}
+  PlayerMesh: {fileID: 5920966941673976110}
   _coyoteTime: 0.2
   _slopeDetectOffset: 0.5
   _isOnSlope: 0
-  _collider: {fileID: 0}
+  _collider: {fileID: 3698426053211491429}
   _physicsFriction: {fileID: 6200000, guid: e04890dc7a529604582bfb42453c496c, type: 2}
   _physicsNoFriction: {fileID: 6200000, guid: 5543467fd0c479a4b84f2cc0ad815a4b, type: 2}
   NumberTeleport: 1
-  _teleport: {fileID: 0}
+  _teleport: {fileID: 2147132678905996320}
   teleportationClick: 0
   _cursor: {x: 0, y: 0}
   IsGamepad: 0
