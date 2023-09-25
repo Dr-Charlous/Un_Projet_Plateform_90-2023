@@ -59,6 +59,9 @@ public class PlayerController : MonoBehaviour
     public bool teleportationClick;
     public Vector2 _cursor;
     public bool IsGamepad;
+    public AudioManager Audio;
+    public string _walkSound;
+    public string _jumpSound;
 
     private void Awake()
     {
@@ -93,6 +96,8 @@ public class PlayerController : MonoBehaviour
     void GetMoveInputs(InputAction.CallbackContext move)
     {
         _inputs = move.ReadValue<Vector2>();
+
+        Audio.Play(_walkSound);
     }
     
     void GetCursorInputsGamepad(InputAction.CallbackContext cursor)
@@ -109,6 +114,8 @@ public class PlayerController : MonoBehaviour
     {
         _inputJump = true;
         _timerSinceJumpPressed = 0;
+
+        Audio.Play(_jumpSound);
     }
 
     void GetShootInputs(InputAction.CallbackContext tp)

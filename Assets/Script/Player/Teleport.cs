@@ -6,6 +6,8 @@ using UnityEngine.Animations;
 
 public class Teleport : MonoBehaviour
 {
+    public AudioManager Audio;
+    public string _teleportSound;
     public GameObject Player;
     public GameObject TpPointPivot;
     public Collider2D CursorCollider;
@@ -73,6 +75,8 @@ public class Teleport : MonoBehaviour
             TimeSinceTeleport = 0;
             Player.GetComponent<PlayerController>().NumberTeleport -= 1;
             Player.GetComponent<PlayerController>().teleportationClick = false;
+
+            Audio.Play(_teleportSound);
         }
     }
 }
