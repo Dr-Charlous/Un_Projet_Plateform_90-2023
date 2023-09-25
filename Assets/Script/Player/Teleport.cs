@@ -56,7 +56,7 @@ public class Teleport : MonoBehaviour
         }
 
 
-        //TpPointPivot.transform.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward);
+        //LookAt
         Vector3 diff = CursorInput - TpPointPivot.transform.position;
         diff.Normalize();
         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;

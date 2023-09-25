@@ -142,6 +142,8 @@ public class PlayerController : MonoBehaviour
         HandleJump();
         HandleSlope();
         HandleCorners();
+
+        teleportationClick = false;
     }
     #endregion
 
