@@ -6,6 +6,19 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
 using UnityEngine.WSA;
+using Unity.VisualScripting;
+using System;
+
+[System.Serializable]
+public class Sound
+{
+    public AudioClip clip;
+
+    [Range(0f, 1f)]
+    public float volume;
+    [Range(1f, 3f)]
+    public float pitch;
+}
 
 public class PlayerController : MonoBehaviour
 {
@@ -59,9 +72,13 @@ public class PlayerController : MonoBehaviour
     public bool teleportationClick;
     public Vector2 _cursor;
     public bool IsGamepad;
-    public AudioManager Audio;
-    public string _walkSound;
-    public string _jumpSound;
+
+    [Header("Sounds")]
+    public AudioSource _audioSource;
+    public Sound _walkSound;
+    public Sound _jumpSound;
+    public Sound _hitGround;
+
 
     private void Awake()
     {
@@ -97,7 +114,8 @@ public class PlayerController : MonoBehaviour
     {
         _inputs = move.ReadValue<Vector2>();
 
-        Audio.Play(_walkSound);
+        Play(_walkSound, _audioSource);
+        _audioSource.Play();
     }
     
     void GetCursorInputsGamepad(InputAction.CallbackContext cursor)
@@ -115,7 +133,8 @@ public class PlayerController : MonoBehaviour
         _inputJump = true;
         _timerSinceJumpPressed = 0;
 
-        Audio.Play(_jumpSound);
+        Play(_jumpSound, _audioSource);
+        _audioSource.Play();
     }
 
     void GetShootInputs(InputAction.CallbackContext tp)
@@ -181,6 +200,8 @@ public class PlayerController : MonoBehaviour
         }
 
         _isGrounded = currentGrounded;
+
+        //Play(_hitGround, _audioSource);
     }
 
 
@@ -295,5 +316,12 @@ public class PlayerController : MonoBehaviour
 
             PlayerMesh.transform.localScale = new Vector3(side, PlayerMesh.transform.localScale.y, PlayerMesh.transform.localScale.z);
         }
+    }
+
+    public void Play(Sound _sound, AudioSource _audioSource)
+    {
+        _audioSource.clip = _sound.clip;
+        _audioSource.volume = _sound.volume;
+        _audioSource.pitch = _sound.pitch;
     }
 }

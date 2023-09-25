@@ -4,42 +4,42 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[System.Serializable]
-public class Sound
-{
-    public string name;
+//[System.Serializable]
+//public class Sound
+//{
+//    public string name;
 
-    public AudioClip clip;
+//    public AudioClip clip;
 
-    [Range(0f, 1f)]
-    public float volume;
-    [Range(1f, 3f)]
-    public float pitch;
+//    [Range(0f, 1f)]
+//    public float volume;
+//    [Range(1f, 3f)]
+//    public float pitch;
 
-    [HideInInspector]
-    public AudioSource source;
+//    [HideInInspector]
+//    public AudioSource source;
 
-}
+//}
 
-public class AudioManager : MonoBehaviour
-{
-    public Sound[] sounds;
+//public class AudioManager : MonoBehaviour
+//{
+//    public Sound[] sounds;
 
-    void Awake()
-    {
-        foreach (Sound s in sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
+//    void Awake()
+//    {
+//        foreach (Sound sounds in sounds)
+//        {
+//            sounds.source = gameObject.GetComponent<AudioSource>();
+//            sounds.source.clip = sounds.clip;
 
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-        }
-    }
+//            sounds.source.volume = sounds.volume;
+//            sounds.source.pitch = sounds.pitch;
+//        }
+//    }
 
-    public void Play(string name)
-    {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
-    }
-}
+//    public void Play(string name)
+//    {
+//        Sound _sound = Array.Find(sounds, sound => sound.name == name);
+//        _sound.source.Play();
+//    }
+//}
