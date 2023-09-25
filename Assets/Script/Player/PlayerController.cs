@@ -5,6 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
+using UnityEngine.WSA;
 
 public class PlayerController : MonoBehaviour
 {
@@ -62,6 +63,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _input = new PlayerInputs();
+
+        UnityEngine.Cursor.visible = false;
     }
 
     private void OnEnable()
@@ -94,13 +97,11 @@ public class PlayerController : MonoBehaviour
     
     void GetCursorInputsGamepad(InputAction.CallbackContext cursor)
     {
-        _cursor = cursor.ReadValue<Vector2>();
         IsGamepad = true;
     }
     
     void GetCursorInputsMouse(InputAction.CallbackContext cursor)
     {
-        _cursor = Camera.main.ScreenToWorldPoint(cursor.ReadValue<Vector2>());
         IsGamepad = false;
     }
 
@@ -115,24 +116,24 @@ public class PlayerController : MonoBehaviour
         teleportationClick = true;
     }
 
-    //void HandleInputs()
-    //{
-    //    _inputs.x = Input.GetAxisRaw("Horizontal");
-    //    _inputs.y = Input.GetAxisRaw("Vertical");
+    void HandleInputs()
+    {
+        if (IsGamepad)
+        {
+            _cursor = _input.Player.CursorGamepad.ReadValue<Vector2>();
+        }
+        else
+        {
+            _cursor = Camera.main.ScreenToWorldPoint(_input.Player.CursorMouse.ReadValue<Vector2>());
+        }
 
-    //    _inputJump = Input.GetKey(KeyCode.UpArrow);
+        teleportationClick = false;
+    }
 
-    //    if (_inputJump)
-    //    {
-    //        _timerSinceJumpPressed = 0;
-    //    }
-
-    //}
-
-    //private void Update()
-    //{
-    //    HandleInputs();
-    //}
+    private void Update()
+    {
+        HandleInputs();
+    }
 
     private void FixedUpdate()
     {
