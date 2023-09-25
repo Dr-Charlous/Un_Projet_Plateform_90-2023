@@ -113,7 +113,7 @@ MonoBehaviour:
   _inputs: {x: 0, y: 0}
   _inputJump: 0
   _rb: {fileID: 0}
-  _walkSpeed: 10
+  _walkSpeed: 11
   _acceleration: 10
   _groundOffset: -0.8
   _groundRadius: 0.38
@@ -286,8 +286,8 @@ MonoBehaviour:
   _tagGround: Ground
   _isGrounded: 1
   _timerMinBetweenJump: 0.1
-  _jumpForce: 11
-  _velocityFallMin: -10
+  _jumpForce: 10
+  _velocityFallMin: -11
   _gravityUpJump: 0.8
   _gravity: 2.5
   _jumpInputTimer: 0.5
