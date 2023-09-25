@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: Teleport
     clip: {fileID: 8300000, guid: 8abee794111fa1c4c8c1d51eb4ac5062, type: 3}
-    volume: 1
+    volume: 0.219
     pitch: 1
     source: {fileID: 0}
   - name: Walk
@@ -367,9 +367,9 @@ MonoBehaviour:
   teleportationClick: 0
   _cursor: {x: 0, y: 0}
   IsGamepad: 0
-  Audio: {fileID: 0}
-  _walkSound: 
-  _jumpSound: 
+  Audio: {fileID: 2395293128151732186}
+  _walkSound: Walk
+  _jumpSound: Jump
 --- !u!1 &5920966941673976110
 GameObject:
   m_ObjectHideFlags: 0
