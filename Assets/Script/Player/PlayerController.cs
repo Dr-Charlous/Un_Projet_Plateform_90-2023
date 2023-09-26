@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.WSA;
 using Unity.VisualScripting;
 using System;
+using UnityEngine.Scripting;
 
 [Serializable]
 public class Sound
@@ -35,20 +36,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _groundOffset;
     [SerializeField] float _groundRadius;
     [SerializeField] LayerMask _GroundLayer;
-    [SerializeField] Collider2D[] _collidersGround;
-    public string _tagGround;
-    [SerializeField] bool _isGrounded;
+    [SerializeField] [Tooltip("Collider list of all plateforms of the scene")] Collider2D[] _collidersGround;
+    [SerializeField] [Tooltip("Touching ground or not")] bool _isGrounded;
 
     [Header("Jump")]
-    [SerializeField] float _timerMinBetweenJump;
+    [SerializeField] [Tooltip("Time minimum between jumps")] float _timerMinBetweenJump;
     [SerializeField] float _jumpForce;
-    [SerializeField] float _velocityFallMin;
+    [SerializeField] [Tooltip("Fall speed")] float _velocityFallMin;
     [SerializeField] [Tooltip("Gravity when the player goes up and press jump")] float _gravityUpJump;
     [SerializeField] [Tooltip("Gravity otherwise")] float _gravity;
     [SerializeField] float _jumpInputTimer = 0.1f;
     [SerializeField] float _timerNoJump;
     [SerializeField] float _timerSinceJumpPressed;
     [SerializeField] float _TimeSinceGrounded;
+    [SerializeField] float _TimeSinceNotGrounded;
 
     [Header("Teleportation")]
     public int NumberTeleport = 1;
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour
 
     RaycastHit2D[] _hitResults = new RaycastHit2D[2];
     float[] directions = new float[] { 1, -1 };
+    public ScreenShake _shake;
 
 
 
@@ -203,10 +205,23 @@ public class PlayerController : MonoBehaviour
 
         _isGrounded = currentGrounded;
 
+        if (_isGrounded) 
+        {
+            _TimeSinceNotGrounded = 0;
+        }
+        else
+        {
+            _TimeSinceNotGrounded += Time.deltaTime;
+        }
 
         bool currentTouching = Physics2D.OverlapCircleNonAlloc(new Vector2(point.x, point.y - 0.2f), _groundRadius, _collidersGround, _GroundLayer) > 0;
         if (currentTouching && _rb.velocity.y < 0)
         {
+            if (_TimeSinceNotGrounded > 2)
+            {
+                _shake.ShakeCamera();
+            }
+
             PlaySound(_hitGround, _audioSource);
         }
     }

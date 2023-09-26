@@ -224,7 +224,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _tagGround: Ground
   _isGrounded: 1
   _timerMinBetweenJump: 0.1
   _jumpForce: 10
@@ -235,6 +234,7 @@ MonoBehaviour:
   _timerNoJump: 0
   _timerSinceJumpPressed: 0
   _TimeSinceGrounded: 0
+  _TimeSinceNotGrounded: 0
   NumberTeleport: 1
   _teleport: {fileID: 2147132678905996320}
   teleportationClick: 0
@@ -519,8 +519,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.055, y: -0.2}
-  m_Size: {x: 1.2, y: 1.8}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.2, y: 1.2}
   m_Direction: 0
 --- !u!212 &5693917929169009691
 SpriteRenderer:
@@ -701,7 +701,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _teleportSound:
-    clip: {fileID: 8300000, guid: 8abee794111fa1c4c8c1d51eb4ac5062, type: 3}
+    clip: {fileID: 0}
     loop: 0
     volume: 1
     pitch: 1

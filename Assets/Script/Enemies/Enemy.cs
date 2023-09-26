@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerController>() == null || _timerValue > 0)
+        if (collision.GetComponent<PlayerController>() == null || _timerValue > 0 || collision.transform.position.y < transform.position.y)
             return;
 
         _audioSource1.clip = _outSound;
