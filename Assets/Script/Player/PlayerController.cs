@@ -176,7 +176,7 @@ public class PlayerController : MonoBehaviour
         Vector2 wantedVelocity = new Vector2(_inputs.x * _walkSpeed, velocity.y);
         _rb.velocity = Vector2.MoveTowards(velocity, wantedVelocity, _acceleration * Time.deltaTime);
 
-        if (_rb.velocity.x != 0)
+        if (_rb.velocity.x != 0 && _isGrounded)
         {
             PlaySound(_walkSound, _audioSource);
         }
@@ -208,9 +208,7 @@ public class PlayerController : MonoBehaviour
         if (currentTouching && _rb.velocity.y < 0)
         {
             PlaySound(_hitGround, _audioSource);
-            print("tdhdd");
         }
-        //Debug.Log($@"{_rb.velocity.y < 0}");
     }
 
 

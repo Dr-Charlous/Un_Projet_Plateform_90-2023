@@ -1208,6 +1208,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: _walkSound.clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a57b7bdf3c3c8043960e28e317c2a1c, type: 3}
+    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: _collidersGround.Array.data[0]
       value: 
       objectReference: {fileID: 1132905169}
