@@ -47,9 +47,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: db7d412cab9ab1c469d9ad21bd13c277, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -235,43 +235,34 @@ MonoBehaviour:
   _timerNoJump: 0
   _timerSinceJumpPressed: 0
   _TimeSinceGrounded: 0
+  NumberTeleport: 1
+  _teleport: {fileID: 2147132678905996320}
+  teleportationClick: 0
+  _cursor: {x: 0, y: 0}
+  IsGamepad: 0
   PlayerMesh: {fileID: 5920966941673976110}
+  _audioSource: {fileID: 5872842952700288474}
+  _walkSound:
+    clip: {fileID: 0}
+    loop: 0
+    volume: 1
+    pitch: 1
+  _jumpSound:
+    clip: {fileID: 8300000, guid: db7d412cab9ab1c469d9ad21bd13c277, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  _hitGround:
+    clip: {fileID: 8300000, guid: e3523f690cd9d364ba5cfd507596633e, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
   _coyoteTime: 0.2
   _slopeDetectOffset: 0.5
   _isOnSlope: 0
   _collider: {fileID: 3698426053211491429}
   _physicsFriction: {fileID: 6200000, guid: e04890dc7a529604582bfb42453c496c, type: 2}
   _physicsNoFriction: {fileID: 6200000, guid: 5543467fd0c479a4b84f2cc0ad815a4b, type: 2}
-  NumberTeleport: 1
-  _teleport: {fileID: 2147132678905996320}
-  teleportationClick: 0
-  _cursor: {x: 0, y: 0}
-  IsGamepad: 0
-  _audioSource: {fileID: 5872842952700288474}
-  _walkSound: Walk
-  _jumpSound: Jump
-  _hitGround: HitGround
-  _sounds:
-  - name: Walk
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    source: {fileID: 0}
-  - name: Jump
-    clip: {fileID: 8300000, guid: db7d412cab9ab1c469d9ad21bd13c277, type: 3}
-    volume: 0
-    pitch: 0
-    source: {fileID: 0}
-  - name: HitGround
-    clip: {fileID: 8300000, guid: e3523f690cd9d364ba5cfd507596633e, type: 3}
-    volume: 0
-    pitch: 0
-    source: {fileID: 0}
-  - name: Teleport
-    clip: {fileID: 8300000, guid: 8abee794111fa1c4c8c1d51eb4ac5062, type: 3}
-    volume: 0
-    pitch: 0
-    source: {fileID: 0}
 --- !u!1 &5920966941673976110
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +700,12 @@ MonoBehaviour:
   Layer:
     serializedVersion: 2
     m_Bits: 64
-  _teleportSound: Teleport
+  _teleportSound:
+    clip: {fileID: 8300000, guid: 8abee794111fa1c4c8c1d51eb4ac5062, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+  _audioSource: {fileID: 5872842952700288474}
 --- !u!1 &8557796302881895984
 GameObject:
   m_ObjectHideFlags: 0

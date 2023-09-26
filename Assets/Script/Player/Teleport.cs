@@ -76,7 +76,7 @@ public class Teleport : MonoBehaviour
             Player.GetComponent<PlayerController>().NumberTeleport -= 1;
             Player.GetComponent<PlayerController>().teleportationClick = false;
 
-            Player.GetComponent<PlayerController>().Play(_teleportSound, _audioSource);
+            Player.GetComponent<PlayerController>().PlaySound(_teleportSound, _audioSource);
         }
     }
 }

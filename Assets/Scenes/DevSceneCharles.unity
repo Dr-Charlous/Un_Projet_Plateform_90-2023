@@ -1208,30 +1208,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _hitGround.clip
-      value: 
-      objectReference: {fileID: 8300000, guid: e3523f690cd9d364ba5cfd507596633e, type: 3}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _jumpSound.clip
-      value: 
-      objectReference: {fileID: 8300000, guid: db7d412cab9ab1c469d9ad21bd13c277, type: 3}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _hitGround.volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _jumpSound.volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _walkSound.volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _collidersGround.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: _collidersGround.Array.data[0]
       value: 
       objectReference: {fileID: 1132905169}
@@ -1255,18 +1231,6 @@ PrefabInstance:
       propertyPath: _collidersGround.Array.data[5]
       value: 
       objectReference: {fileID: 447134788}
-    - target: {fileID: 2147132678905996320, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _audioSource
-      value: 
-      objectReference: {fileID: 6267574120439678481}
-    - target: {fileID: 2147132678905996320, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _teleportSound.clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 8abee794111fa1c4c8c1d51eb4ac5062, type: 3}
-    - target: {fileID: 2147132678905996320, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _teleportSound.volume
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5152239649372325255, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1392,10 +1356,5 @@ PrefabInstance:
 --- !u!70 &6267574120439678478 stripped
 CapsuleCollider2D:
   m_CorrespondingSourceObject: {fileID: 3698426053211491429, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-  m_PrefabInstance: {fileID: 1781758521501106734}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &6267574120439678481 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5872842952700288474, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
   m_PrefabInstance: {fileID: 1781758521501106734}
   m_PrefabAsset: {fileID: 0}

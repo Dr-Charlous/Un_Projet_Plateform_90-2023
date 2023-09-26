@@ -9,11 +9,11 @@ using UnityEngine.WSA;
 using Unity.VisualScripting;
 using System;
 
-[System.Serializable]
+[Serializable]
 public class Sound
 {
     public AudioClip clip;
-
+    public bool loop;
     [Range(0f, 1f)]
     public float volume;
     [Range(1f, 3f)]
@@ -23,6 +23,7 @@ public class Sound
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Vector2 _inputs;
+    [SerializeField] PlayerInputs _input;
     [SerializeField] bool _inputJump;
     [SerializeField] Rigidbody2D _rb;
 
@@ -49,8 +50,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _timerSinceJumpPressed;
     [SerializeField] float _TimeSinceGrounded;
 
+    [Header("Teleportation")]
+    public int NumberTeleport = 1;
+    public Teleport _teleport;
+    public bool teleportationClick;
+    public Vector2 _cursor;
+    public bool IsGamepad;
+
     [Header("Anim")]
-    public GameObject PlayerMesh;
+    [SerializeField] GameObject PlayerMesh;
+
+    [Header("Sounds")]
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] Sound _walkSound;
+    [SerializeField] Sound _jumpSound;
+    [SerializeField] Sound _hitGround;
 
     [Header("Idk")]
     [SerializeField] float _coyoteTime;
@@ -66,18 +80,7 @@ public class PlayerController : MonoBehaviour
     RaycastHit2D[] _hitResults = new RaycastHit2D[2];
     float[] directions = new float[] { 1, -1 };
 
-    public int NumberTeleport = 1;
-    public Teleport _teleport;
-    private PlayerInputs _input;
-    public bool teleportationClick;
-    public Vector2 _cursor;
-    public bool IsGamepad;
 
-    [Header("Sounds")]
-    public AudioSource _audioSource;
-    public Sound _walkSound;
-    public Sound _jumpSound;
-    public Sound _hitGround;
 
 
     private void Awake()
@@ -113,9 +116,6 @@ public class PlayerController : MonoBehaviour
     void GetMoveInputs(InputAction.CallbackContext move)
     {
         _inputs = move.ReadValue<Vector2>();
-
-        Play(_walkSound, _audioSource);
-        _audioSource.Play();
     }
     
     void GetCursorInputsGamepad(InputAction.CallbackContext cursor)
@@ -132,9 +132,6 @@ public class PlayerController : MonoBehaviour
     {
         _inputJump = true;
         _timerSinceJumpPressed = 0;
-
-        Play(_jumpSound, _audioSource);
-        _audioSource.Play();
     }
 
     void GetShootInputs(InputAction.CallbackContext tp)
@@ -178,6 +175,11 @@ public class PlayerController : MonoBehaviour
         var velocity = _rb.velocity;
         Vector2 wantedVelocity = new Vector2(_inputs.x * _walkSpeed, velocity.y);
         _rb.velocity = Vector2.MoveTowards(velocity, wantedVelocity, _acceleration * Time.deltaTime);
+
+        if (_rb.velocity.x != 0)
+        {
+            PlaySound(_walkSound, _audioSource);
+        }
     }
 
     Vector2 point;
@@ -201,7 +203,14 @@ public class PlayerController : MonoBehaviour
 
         _isGrounded = currentGrounded;
 
-        //Play(_hitGround, _audioSource);
+
+        bool currentTouching = Physics2D.OverlapCircleNonAlloc(new Vector2(point.x, point.y - 0.2f), _groundRadius, _collidersGround, _GroundLayer) > 0;
+        if (currentTouching && _rb.velocity.y < 0)
+        {
+            PlaySound(_hitGround, _audioSource);
+            print("tdhdd");
+        }
+        //Debug.Log($@"{_rb.velocity.y < 0}");
     }
 
 
@@ -209,6 +218,8 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(point, _groundRadius);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(new Vector2(point.x, point.y - 0.2f), _groundRadius);
         Gizmos.color = Color.white;
     }
 
@@ -244,7 +255,10 @@ public class PlayerController : MonoBehaviour
         {
             _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
             _timerNoJump = _timerMinBetweenJump;
+
+            PlaySound(_jumpSound, _audioSource);
         }
+
 
         if (!_input.Player.Jump.IsPressed())
         {
@@ -318,10 +332,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Play(Sound _sound, AudioSource _audioSource)
+    public void PlaySound(Sound _sound, AudioSource _audioSource)
     {
+        if (_audioSource.isPlaying && _audioSource.clip == _sound.clip)
+            return;
+
+        _audioSource.Stop();
         _audioSource.clip = _sound.clip;
+        _audioSource.loop = _sound.loop;
         _audioSource.volume = _sound.volume;
         _audioSource.pitch = _sound.pitch;
+        _audioSource.Play();
+
+        //Debug.Log($@"clip : {_audioSource.clip} : {_sound.clip}
+//loop : {_audioSource.loop} : {_sound.loop}
+//volume : {_audioSource.volume} : {_sound.volume}
+//pitch : {_audioSource.pitch} : {_sound.pitch}");
     }
 }
