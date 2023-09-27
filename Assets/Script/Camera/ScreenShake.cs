@@ -34,6 +34,9 @@ public class ScreenShake : MonoBehaviour
         CinemachineBasicMultiChannelPerlin _clmp = _cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _clmp.m_AmplitudeGain = 0f;
         _timer = 0;
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, -35);
+        transform.rotation = Quaternion.Euler(new Vector3 (0, 0, 0));
     }
 
     private void Update()

@@ -217,7 +217,7 @@ public class PlayerController : MonoBehaviour
         bool currentTouching = Physics2D.OverlapCircleNonAlloc(new Vector2(point.x, point.y - 0.2f), _groundRadius, _collidersGround, _GroundLayer) > 0;
         if (currentTouching && _rb.velocity.y < 0)
         {
-            if (_TimeSinceNotGrounded > 2)
+            if (_TimeSinceNotGrounded > 3)
             {
                 _shake.ShakeCamera();
             }

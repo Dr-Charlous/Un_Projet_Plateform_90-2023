@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEditor;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class MenuManager1 : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class MenuManager1 : MonoBehaviour
 
     private void Start()
     {
-        _cam.transform.position = new Vector3(_camBeginPos.x, 0, _camBeginPos.z);
+        _cam.transform.position = _camBeginPos;
     }
 
     public void Update()
@@ -31,5 +32,15 @@ public class MenuManager1 : MonoBehaviour
         {
             _cam.transform.position = _camBeginPos;
         }
+    }
+
+    public void PlayButton(string nameScene)
+    {
+        SceneManager.LoadScene(nameScene);
+    }
+
+    public void QuitButton()
+    {
+        Application.Quit();
     }
 }

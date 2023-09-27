@@ -595,6 +595,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1971779000341589586, guid: 6e267812a2e3f934cafc3035d63db433, type: 3}
+      propertyPath: m_NoiseProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
     - target: {fileID: 4424329187698031737, guid: 6e267812a2e3f934cafc3035d63db433, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -642,6 +646,10 @@ PrefabInstance:
     - target: {fileID: 4739031633126725472, guid: 6e267812a2e3f934cafc3035d63db433, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046005993563225837, guid: 6e267812a2e3f934cafc3035d63db433, type: 3}
+      propertyPath: ShakeTime
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4563414538713838207, guid: 6e267812a2e3f934cafc3035d63db433, type: 3}
@@ -1498,11 +1506,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9006518571361636841, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 8.3
       objectReference: {fileID: 0}
     - target: {fileID: 9006518571361636841, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 56.3
       objectReference: {fileID: 0}
     - target: {fileID: 9006518571361636841, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: m_LocalPosition.z
