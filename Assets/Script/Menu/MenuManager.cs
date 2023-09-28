@@ -39,7 +39,7 @@ public class MenuManager : MonoBehaviour
     public void PlayButton(string nameScene)
     {
         _nameSceneTraget = nameScene;
-        StartCoroutine(_transition.TimeAnimationEnd(true));
+        StartCoroutine(_transition.TimeAnimationEndMenu(true));
 
         if (_transition._animate)
             return;
@@ -52,7 +52,7 @@ public class MenuManager : MonoBehaviour
 
     public void QuitButton()
     {
-        StartCoroutine(_transition.TimeAnimationEnd(false));
+        StartCoroutine(_transition.TimeAnimationEndMenu(false));
 
 
         if (_transition._animate)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Transition : MonoBehaviour
@@ -31,7 +32,7 @@ public class Transition : MonoBehaviour
         SwitchButton(true);
     }
 
-    public IEnumerator TimeAnimationEnd(bool PlayOrQuit)
+    public IEnumerator TimeAnimationEndMenu(bool PlayOrQuit)
     {
         SwitchButton(false);
         _animator.SetTrigger("End");
@@ -50,5 +51,15 @@ public class Transition : MonoBehaviour
                 _menuManager.QuitButton();
             }
         }
+    }
+
+    public IEnumerator TimeAnimationEnd(string name)
+    {
+        _animator.SetTrigger("End");
+
+        yield return new WaitForSeconds(_fadeTime);
+        _canChangeScene = true;
+
+        SceneManager.LoadScene(name);
     }
 }
