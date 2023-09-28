@@ -39,13 +39,16 @@ public class Transition : MonoBehaviour
         yield return new WaitForSeconds(_fadeTime);
         _canChangeScene = true;
 
-        if (PlayOrQuit)
+        if (_menuManager != null)
         {
-            _menuManager.PlayButton(_menuManager._nameSceneTraget);
-        }
-        else
-        {
-            _menuManager.QuitButton();
+            if (PlayOrQuit)
+            {
+                _menuManager.PlayButton(_menuManager._nameSceneTraget);
+            }
+            else
+            {
+                _menuManager.QuitButton();
+            }
         }
     }
 }
