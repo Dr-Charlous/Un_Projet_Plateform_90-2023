@@ -36697,6 +36697,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4739031633126725472, guid: 6e267812a2e3f934cafc3035d63db433, type: 3}
   m_PrefabInstance: {fileID: 2083123451}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &800914557 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4979593114389498828, guid: 6e267812a2e3f934cafc3035d63db433, type: 3}
+  m_PrefabInstance: {fileID: 2083123451}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ac9a1253fa2bc4ea0c373fe5e1a6a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &814829824
 GameObject:
   m_ObjectHideFlags: 0
@@ -36867,7 +36878,6 @@ GameObject:
   m_Component:
   - component: {fileID: 901716070}
   - component: {fileID: 901716071}
-  - component: {fileID: 901716072}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -36906,22 +36916,8 @@ MonoBehaviour:
   _camSpeed: 0.02
   _camBeginPos: {x: 0.4, y: -52, z: -35}
   _camEndPos: {x: 0.4, y: 142, z: -35}
---- !u!114 &901716072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 901716069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ac9a1253fa2bc4ea0c373fe5e1a6a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _buttons:
-  - {fileID: 216933711}
-  - {fileID: 1626320621}
-  _animate: 0
+  _nameSceneTraget: 
+  _transition: {fileID: 800914557}
 --- !u!1 &987361034
 GameObject:
   m_ObjectHideFlags: 0
@@ -37383,6 +37379,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4979593114389498828, guid: 6e267812a2e3f934cafc3035d63db433, type: 3}
+      propertyPath: _menuManager
+      value: 
+      objectReference: {fileID: 901716071}
     - target: {fileID: 6046005993563225837, guid: 6e267812a2e3f934cafc3035d63db433, type: 3}
       propertyPath: m_Enabled
       value: 0
