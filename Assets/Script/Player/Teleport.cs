@@ -8,6 +8,7 @@ public class Teleport : MonoBehaviour
 {
     public GameObject Player;
     public GameObject TpPointPivot;
+    public GameObject TpPoint;
     public Collider2D CursorCollider;
     public float Range;
     public float CooldownTeleport;
@@ -42,6 +43,8 @@ public class Teleport : MonoBehaviour
         {
             CanTeleport = true;
         }
+
+        TpPoint.transform.rotation = Player.transform.rotation;
     }
 
     public void CursorTeleport()
@@ -71,7 +74,7 @@ public class Teleport : MonoBehaviour
 
         if (Player.GetComponent<PlayerController>().teleportationClick && TimeSinceTeleport > CooldownTeleport && CanTeleport && Player.GetComponent<PlayerController>().NumberTeleport > 0)
         {
-            Player.transform.position = gameObject.transform.position;
+            Player.transform.position = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y + 0.3f, gameObject.transform.position.z);
             TimeSinceTeleport = 0;
             Player.GetComponent<PlayerController>().NumberTeleport -= 1;
             Player.GetComponent<PlayerController>().teleportationClick = false;

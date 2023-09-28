@@ -90,8 +90,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _input = new PlayerInputs();
-
-        UnityEngine.Cursor.visible = false;
     }
 
     private void OnEnable()
@@ -168,7 +166,11 @@ public class PlayerController : MonoBehaviour
                 teleportationClick = false;
             }
         }
+
+        if (UnityEngine.Cursor.visible)
+            UnityEngine.Cursor.visible = false;
     }
+    #endregion
 
     private void Update()
     {
@@ -184,7 +186,6 @@ public class PlayerController : MonoBehaviour
         HandleSlope();
         HandleCorners();
     }
-    #endregion
 
     #region move ground n jump
     void HandleMovements()
@@ -358,7 +359,7 @@ public class PlayerController : MonoBehaviour
             else
                 side = 1;
 
-            if (PlayerMesh.transform.localScale.x != side)
+            if (PlayerMesh.transform.localScale.x != side && _rb.velocity.y == 0)
             {
                 _particules.Play();
             }
@@ -378,10 +379,5 @@ public class PlayerController : MonoBehaviour
         _audioSource.volume = _sound.volume;
         _audioSource.pitch = _sound.pitch;
         _audioSource.Play();
-
-        //Debug.Log($@"clip : {_audioSource.clip} : {_sound.clip}
-//loop : {_audioSource.loop} : {_sound.loop}
-//volume : {_audioSource.volume} : {_sound.volume}
-//pitch : {_audioSource.pitch} : {_sound.pitch}");
     }
 }

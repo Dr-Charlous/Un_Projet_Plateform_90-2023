@@ -5746,6 +5746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 5152239649372325255}
   TpPointPivot: {fileID: 8557796302881895984}
+  TpPoint: {fileID: 7699483209403660716}
   CursorCollider: {fileID: 7046874443365343370}
   Range: 5
   CooldownTeleport: 1

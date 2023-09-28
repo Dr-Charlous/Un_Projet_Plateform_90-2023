@@ -35260,22 +35260,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 52674048}
     - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _isGrounded
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _particules
-      value: 
-      objectReference: {fileID: 1782248873}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _collidersGround.Array.size
-      value: 228
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: _collidersGround.Array.data[0]
       value: 
       objectReference: {fileID: 711170802}
@@ -36195,6 +36179,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 7046874443365343370, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7699483209403660716, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -37083,11 +37071,6 @@ BoxCollider2D:
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 8899016014722981695, guid: f57c784df846d9d4f9ab6b7056e0502f, type: 3}
   m_PrefabInstance: {fileID: 5461795205863088563}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1782248873 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2892353079252883949, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-  m_PrefabInstance: {fileID: 1407963157}
   m_PrefabAsset: {fileID: 0}
 --- !u!61 &1786122539 stripped
 BoxCollider2D:
