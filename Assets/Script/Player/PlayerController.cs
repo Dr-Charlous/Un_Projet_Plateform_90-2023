@@ -206,7 +206,6 @@ public class PlayerController : MonoBehaviour
 
     Vector2 point;
 
-    [Obsolete]
     void HandleGrounded()
     {
         _TimeSinceGrounded += Time.deltaTime;
