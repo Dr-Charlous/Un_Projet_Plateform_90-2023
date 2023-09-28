@@ -13,6 +13,7 @@ public class Starting : MonoBehaviour
     public Vector3 _beginPos;
     public Vector3 _endPos;
     public float _speed;
+    public float _timeToMove;
 
     private void Start()
     {
@@ -24,16 +25,17 @@ public class Starting : MonoBehaviour
         _cam.position = _beginPos;
     }
 
+    [System.Obsolete]
     private void Update()
     {
-        if (Doppleganger.activeSelf)
+        _cam.DOMove(_endPos, _speed);
+
+        if (Player.active)
         {
-            
+            return;
         }
-        else
-        {
-            _cam.DOMove(_endPos, _speed);
-        }
+
+        _cam.DOMove(_endPos, _speed * 100 * Time.deltaTime);
     }
 
     void SwitchPalyer()
@@ -44,8 +46,10 @@ public class Starting : MonoBehaviour
 
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(_speed * 10);
+        yield return new WaitForSeconds(_timeToMove);
         Rooms.SetActive(true);
         SwitchPalyer();
+        yield return new WaitForSeconds(3);
+        Destroy(this);
     }
 }

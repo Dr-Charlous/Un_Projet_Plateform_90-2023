@@ -35856,9 +35856,10 @@ MonoBehaviour:
   Doppleganger: {fileID: 1293010187}
   Rooms: {fileID: 2096975086}
   _cam: {fileID: 52674054}
-  _beginPos: {x: 0, y: 352, z: -35}
-  _endPos: {x: 0, y: 0, z: -35}
-  _speed: 1
+  _beginPos: {x: 0, y: 420, z: -35}
+  _endPos: {x: 0, y: -9, z: -35}
+  _speed: 10
+  _timeToMove: 5
 --- !u!4 &840201023
 Transform:
   m_ObjectHideFlags: 0
