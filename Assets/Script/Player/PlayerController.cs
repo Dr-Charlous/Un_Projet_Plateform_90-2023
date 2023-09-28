@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Vector2 _inputs;
     [SerializeField] PlayerInputs _input;
+    public bool _activeOrNot;
     [SerializeField] bool _inputJump;
     [SerializeField] Rigidbody2D _rb;
 
@@ -117,42 +118,55 @@ public class PlayerController : MonoBehaviour
     #region inputs
     void GetMoveInputs(InputAction.CallbackContext move)
     {
-        _inputs = move.ReadValue<Vector2>();
+        if (_activeOrNot)
+            _inputs = move.ReadValue<Vector2>();
     }
     
     void GetCursorInputsGamepad(InputAction.CallbackContext cursor)
     {
-        IsGamepad = true;
+        if (_activeOrNot)
+            IsGamepad = true;
     }
     
     void GetCursorInputsMouse(InputAction.CallbackContext cursor)
     {
-        IsGamepad = false;
+        if (_activeOrNot)
+            IsGamepad = false;
     }
 
     void GetJumpInputs(InputAction.CallbackContext jump)
     {
-        _inputJump = true;
-        _timerSinceJumpPressed = 0;
+        if (_activeOrNot)
+        {
+            _inputJump = true;
+            _timerSinceJumpPressed = 0;
+        }
     }
 
     void GetShootInputs(InputAction.CallbackContext tp)
     {
-        teleportationClick = true;
+        if (_activeOrNot)
+            teleportationClick = true;
     }
 
     void HandleInputs()
     {
-        if (IsGamepad && _input.Player.CursorGamepad.ReadValue<Vector2>() != Vector2.zero)
+        if (_activeOrNot)
         {
-            _cursor = _input.Player.CursorGamepad.ReadValue<Vector2>();
-        }
-        else if (!IsGamepad)
-        {
-            _cursor = Camera.main.ScreenToWorldPoint(_input.Player.CursorMouse.ReadValue<Vector2>());
-        }
+            if (IsGamepad && _input.Player.CursorGamepad.ReadValue<Vector2>() != Vector2.zero)
+            {
+                _cursor = _input.Player.CursorGamepad.ReadValue<Vector2>();
+            }
+            else if (!IsGamepad)
+            {
+                _cursor = Camera.main.ScreenToWorldPoint(_input.Player.CursorMouse.ReadValue<Vector2>());
+            }
 
-        teleportationClick = false;
+            if (teleportationClick)
+            {
+                teleportationClick = false;
+            }
+        }
     }
 
     private void Update()
