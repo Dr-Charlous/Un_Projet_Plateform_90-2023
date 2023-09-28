@@ -1,79 +1,65 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using DG.Tweening;
+using UnityEngine.UI;
 
 public class Transition : MonoBehaviour
 {
-    [Tooltip("The visual representation type of the transition")] [SerializeField] private AnimationMode _transitionMode;
-    [Tooltip("Fades in at the beginning")] [SerializeField] private bool _fadeIn;
-    [Header("Fade")]
-    [Tooltip("The Image used for the Fade transition")] [SerializeField] private Image _fadeImage;
-    [Tooltip("The time the fade takes to complete in seconds")] [SerializeField] private float _fadeTime = 1f;
-    [Header("Animations")]
-    [Tooltip("The Animator used for the Animation transition")] [SerializeField] private Animator _animator;
-    
-
-    enum AnimationMode
-    {
-        Fade,
-        Animation
-    }
+    public Animator _animator;
+    public bool _animate;
+    public bool _canChangeScene;
+    public float _fadeTime;
+    public MenuManager _menuManager;
 
     private void Start()
     {
-        if (_fadeIn)
+        _animate = true;
+        _canChangeScene = false;
+        _animator.SetTrigger("Idle");
+
+        StartCoroutine(TimeAnimationStart());
+    }
+
+    private void SwitchButton(bool _active)
+    {
+        _animate = _active;
+    }
+
+    private IEnumerator TimeAnimationStart()
+    {
+        yield return new WaitForSeconds(_fadeTime);
+        SwitchButton(true);
+    }
+
+    public IEnumerator TimeAnimationEndMenu(bool PlayOrQuit)
+    {
+        SwitchButton(false);
+        _animator.SetTrigger("End");
+
+        yield return new WaitForSeconds(_fadeTime);
+        _canChangeScene = true;
+
+        if (_menuManager != null)
         {
-            switch (_transitionMode)
+            if (PlayOrQuit)
             {
-                case AnimationMode.Fade:
-                    _fadeImage.DOFade(1, 0);
-                    _fadeImage.DOFade(0, _fadeTime);
-                    break;
-                case AnimationMode.Animation:
-                    AnimationTransition("TransitionIn");
-                    break;
+                _menuManager.PlayButton(_menuManager._nameSceneTraget);
+            }
+            else
+            {
+                _menuManager.QuitButton();
             }
         }
     }
 
-    public void SetTransition(Action endAction)
+    public IEnumerator TimeAnimationEnd(string name)
     {
-        StartCoroutine(_startTransition(endAction));
-    }
+        _animator.SetTrigger("End");
 
-    private IEnumerator _startTransition(Action endAction)
-    {
-        switch (_transitionMode)
-        {
-            case AnimationMode.Fade:
-                _fadeImage.DOFade(0, 0);
-                _fadeImage.DOFade(1, _fadeTime);
-                yield return new WaitForSeconds(_fadeTime);
-                break;
-            case AnimationMode.Animation:
-                float _animationDuration = AnimationTransition("TransitionOut");
-                yield return new WaitForSeconds(_animationDuration);
-                break;
-            default:
-                yield return new WaitForSeconds(0f);
-                break;
-        }
-        
-        endAction?.Invoke();
-    }
+        yield return new WaitForSeconds(_fadeTime);
+        _canChangeScene = true;
 
-    private float AnimationTransition(string transitionName)
-    {
-        _animator.Play(transitionName);
-        var _stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
-        float _animationLength = (1 / _stateInfo.length);
-        float _framePerSecondsInAnimation = 24;
-        float _targetFPS = 60;
-        float _animationDuration = (1-_animationLength / _framePerSecondsInAnimation * _targetFPS * Time.deltaTime) + 1;
-        return _animationDuration;
+        SceneManager.LoadScene(name);
     }
 }

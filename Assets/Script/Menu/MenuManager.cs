@@ -1,21 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEditor;
+using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [field:SerializeField] public Transition Transition { get;  private set; }
-    public static MenuManager MenuManagerInstance { get; private set; }
-    public bool CanClickButtons {get; private set;}
+    [Header("Cam move")]
+    public Camera _cam;
+    public float _camSpeed;
+    public Vector3 _camBeginPos;
+    public Vector3 _camEndPos;
+    public string _nameSceneTraget;
+    public Transition _transition;
 
-    private void Awake()
+    private void Start()
     {
-        MenuManagerInstance = this;
-        CanClickButtons = true;
+        _cam.transform.position = _camBeginPos;
     }
 
-    public void SetButtonsUnclickable()
+    public void Update()
     {
-        CanClickButtons = false;
+        CamMove();
+    }
+
+    void CamMove()
+    {
+        _cam.transform.position = Vector3.Lerp(_cam.transform.position, _camEndPos, _camSpeed * Time.deltaTime);
+
+        if (_cam.transform.position.y >= _camEndPos.y - 2)
+        {
+            _cam.transform.position = _camBeginPos;
+        }
+    }
+
+    public void PlayButton(string nameScene)
+    {
+        _nameSceneTraget = nameScene;
+        StartCoroutine(_transition.TimeAnimationEndMenu(true));
+
+        if (_transition._animate)
+            return;
+
+        if (_transition._canChangeScene)
+        {
+            SceneManager.LoadScene(nameScene);
+        }
+    }
+
+    public void QuitButton()
+    {
+        StartCoroutine(_transition.TimeAnimationEndMenu(false));
+
+
+        if (_transition._animate)
+            return;
+
+        if (_transition._canChangeScene)
+        {
+            Application.Quit();
+        }
     }
 }
