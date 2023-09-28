@@ -7,7 +7,6 @@ using DG.Tweening;
 public class Starting : MonoBehaviour
 {
     public PlayerController Player;
-    public GameObject Doppleganger;
     public GameObject Rooms;
     public Transform _cam;
     public Vector3 _beginPos;
@@ -18,7 +17,6 @@ public class Starting : MonoBehaviour
     private void Start()
     {
         Player._activeOrNot = false;
-        Doppleganger.SetActive(true);
         Rooms.SetActive(false);
 
         StartCoroutine(Wait());
@@ -28,20 +26,20 @@ public class Starting : MonoBehaviour
     [System.Obsolete]
     private void Update()
     {
-        _cam.DOMove(_endPos, _speed);
-
         if (Player._activeOrNot)
         {
             return;
         }
+        else
+        {
+            _cam.DOMove(_endPos, _speed * 100 * Time.deltaTime);
+        }
 
-        _cam.DOMove(_endPos, _speed * 100 * Time.deltaTime);
     }
 
     void SwitchPalyer()
     {
         Player._activeOrNot = !Player._activeOrNot;
-        Doppleganger.SetActive(!Doppleganger.activeSelf);
     }
 
     private IEnumerator Wait()

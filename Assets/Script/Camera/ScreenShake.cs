@@ -6,16 +6,11 @@ using UnityEngine;
 
 public class ScreenShake : MonoBehaviour
 {
-    private CinemachineVirtualCamera _cam;
+    public CinemachineVirtualCamera _camV;
     public float ShakeIntensity;
     public float ShakeTime;
     float _timer;
     private CinemachineBasicMultiChannelPerlin _clmp;
-
-    private void Awake()
-    {
-        _cam = GetComponentInChildren<CinemachineVirtualCamera>();
-    }
 
     private void Start()
     {
@@ -24,14 +19,14 @@ public class ScreenShake : MonoBehaviour
 
     public void ShakeCamera()
     {
-        CinemachineBasicMultiChannelPerlin _clmp = _cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        CinemachineBasicMultiChannelPerlin _clmp = _camV.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _clmp.m_AmplitudeGain = ShakeIntensity;
         _timer = ShakeTime;
     }
 
     void StopShake()
     {
-        CinemachineBasicMultiChannelPerlin _clmp = _cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        CinemachineBasicMultiChannelPerlin _clmp = _camV.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _clmp.m_AmplitudeGain = 0f;
         _timer = 0;
 

@@ -33949,6 +33949,17 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 7719451615722204872, guid: f57c784df846d9d4f9ab6b7056e0502f, type: 3}
   m_PrefabInstance: {fileID: 5461795205863088563}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1040556997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5914844667870747830, guid: 6e267812a2e3f934cafc3035d63db433, type: 3}
+  m_PrefabInstance: {fileID: 2083123451}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &1042125115 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 4533462242671477446, guid: f57c784df846d9d4f9ab6b7056e0502f, type: 3}
@@ -35255,6 +35266,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: _cam
+      value: 
+      objectReference: {fileID: 52674047}
+    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: Rooms
+      value: 
+      objectReference: {fileID: 2096975086}
     - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: _shake
       value: 
@@ -37608,6 +37627,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6046005993563225837, guid: 6e267812a2e3f934cafc3035d63db433, type: 3}
+      propertyPath: _cam
+      value: 
+      objectReference: {fileID: 1040556997}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

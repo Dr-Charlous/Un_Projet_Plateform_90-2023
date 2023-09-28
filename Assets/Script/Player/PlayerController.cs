@@ -9,6 +9,7 @@ using UnityEngine.WSA;
 using Unity.VisualScripting;
 using System;
 using UnityEngine.Scripting;
+using DG.Tweening;
 
 [Serializable]
 public class Sound
@@ -83,6 +84,9 @@ public class PlayerController : MonoBehaviour
     float[] directions = new float[] { 1, -1 };
     public ScreenShake _shake;
     public ParticleSystem _particules;
+    public GameObject Rooms;
+    public GameObject _cam;
+    public float _offSetCamFall;
 
 
 
@@ -202,6 +206,7 @@ public class PlayerController : MonoBehaviour
 
     Vector2 point;
 
+    [Obsolete]
     void HandleGrounded()
     {
         _TimeSinceGrounded += Time.deltaTime;
@@ -231,14 +236,24 @@ public class PlayerController : MonoBehaviour
         }
 
         bool currentTouching = Physics2D.OverlapCircleNonAlloc(new Vector2(point.x, point.y - 0.2f), _groundRadius, _collidersGround, _GroundLayer) > 0;
-        if (currentTouching && _rb.velocity.y < 0)
+
+        if (currentTouching && _rb.velocity.y < 0 && currentGrounded == false)
         {
             if (_TimeSinceNotGrounded > 3)
             {
                 _shake.ShakeCamera();
             }
-
             PlaySound(_hitGround, _audioSource);
+        }
+
+        if (_TimeSinceNotGrounded > 3)
+        {
+            Rooms.SetActive(false);
+            _cam.transform.DOMoveY(transform.position.y - _offSetCamFall, 1);
+        }
+        else if (_isGrounded)
+        {
+            Rooms.SetActive(true);
         }
     }
 
@@ -371,13 +386,16 @@ public class PlayerController : MonoBehaviour
     public void PlaySound(Sound _sound, AudioSource _audioSource)
     {
         if (_audioSource.isPlaying && _audioSource.clip == _sound.clip)
+        {
             return;
-
-        _audioSource.Stop();
-        _audioSource.clip = _sound.clip;
-        _audioSource.loop = _sound.loop;
-        _audioSource.volume = _sound.volume;
-        _audioSource.pitch = _sound.pitch;
-        _audioSource.Play();
+        }
+        else
+        {
+            _audioSource.clip = _sound.clip;
+            _audioSource.loop = _sound.loop;
+            _audioSource.volume = _sound.volume;
+            _audioSource.pitch = _sound.pitch;
+            _audioSource.Play();
+        }
     }
 }
