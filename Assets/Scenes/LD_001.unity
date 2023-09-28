@@ -65663,6 +65663,14 @@ PrefabInstance:
       propertyPath: _collidersGround.Array.data[227]
       value: 
       objectReference: {fileID: 991691158}
+    - target: {fileID: 2892353079252883949, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892353079252883949, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5152239649372325255, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: m_Name
       value: Player
