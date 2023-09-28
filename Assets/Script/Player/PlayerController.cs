@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour
     RaycastHit2D[] _hitResults = new RaycastHit2D[2];
     float[] directions = new float[] { 1, -1 };
     public ScreenShake _shake;
+    public ParticleSystem _particules;
 
 
 
@@ -284,6 +285,7 @@ public class PlayerController : MonoBehaviour
             _timerNoJump = _timerMinBetweenJump;
 
             PlaySound(_jumpSound, _audioSource);
+            _particules.Play();
         }
 
 
@@ -350,10 +352,16 @@ public class PlayerController : MonoBehaviour
         if (_inputs.x != 0)
         {
             int side = 0;
+
             if (_inputs.x < 0)
                 side = -1;
             else
                 side = 1;
+
+            if (PlayerMesh.transform.localScale.x != side)
+            {
+                _particules.Play();
+            }
 
             PlayerMesh.transform.localScale = new Vector3(side, PlayerMesh.transform.localScale.y, PlayerMesh.transform.localScale.z);
         }
