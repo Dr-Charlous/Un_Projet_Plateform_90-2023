@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.VFX;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
 using UnityEngine.WSA;
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour
     RaycastHit2D[] _hitResults = new RaycastHit2D[2];
     float[] directions = new float[] { 1, -1 };
     public ScreenShake _shake;
-    public ParticleSystem _particules;
+    public VisualEffect _particules;
     public GameObject Rooms;
     public GameObject _cam;
     public float _offSetCamFall;
@@ -301,7 +302,7 @@ public class PlayerController : MonoBehaviour
             _timerNoJump = _timerMinBetweenJump;
 
             PlaySound(_jumpSound, _audioSource);
-            _particules.Play();
+            _particules.SendEvent("OnPlay");
         }
 
 
@@ -376,7 +377,7 @@ public class PlayerController : MonoBehaviour
 
             if (PlayerMesh.transform.localScale.x != side && _rb.velocity.y == 0)
             {
-                _particules.Play();
+                _particules.SendEvent("OnPlay");
             }
 
             PlayerMesh.transform.localScale = new Vector3(side, PlayerMesh.transform.localScale.y, PlayerMesh.transform.localScale.z);
