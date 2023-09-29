@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Rooms;
     public GameObject _cam;
     public float _offSetCamFall;
+    public Animator _animator;
 
 
 
@@ -379,6 +380,27 @@ public class PlayerController : MonoBehaviour
             }
 
             PlayerMesh.transform.localScale = new Vector3(side, PlayerMesh.transform.localScale.y, PlayerMesh.transform.localScale.z);
+        }
+
+
+        
+        if (_inputs.x == 0 && _rb.velocity.y == 0)
+        {
+            _animator.SetBool("Idle", true);
+            _animator.SetBool("Run", false);
+            _animator.SetBool("Jump", false);
+        }
+        else if(_rb.velocity.y != 0)
+        {
+            _animator.SetBool("Idle", false);
+            _animator.SetBool("Run", false);
+            _animator.SetBool("Jump", true);
+        }
+        else if (_inputs.x != 0 && _isGrounded)
+        {
+            _animator.SetBool("Idle", false);
+            _animator.SetBool("Run", true);
+            _animator.SetBool("Jump", false);
         }
     }
 

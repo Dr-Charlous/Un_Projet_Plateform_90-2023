@@ -64569,22 +64569,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 52674048}
     - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _isGrounded
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _offSetCamFall
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _collidersGround.Array.size
-      value: 228
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: _collidersGround.Array.data[0]
       value: 
       objectReference: {fileID: 711170802}
@@ -65556,7 +65540,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3948983033197499388, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -66895,7 +66880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4739031633126725472, guid: 6e267812a2e3f934cafc3035d63db433, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 249.70001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4739031633126725472, guid: 6e267812a2e3f934cafc3035d63db433, type: 3}
       propertyPath: m_LocalPosition.z
