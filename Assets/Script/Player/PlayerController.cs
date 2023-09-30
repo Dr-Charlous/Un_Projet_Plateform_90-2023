@@ -302,7 +302,8 @@ public class PlayerController : MonoBehaviour
             _timerNoJump = _timerMinBetweenJump;
 
             PlaySound(_jumpSound, _audioSource);
-            _particules.SendEvent("OnPlay");
+
+            //_particules.SendEvent("OnPlay");
         }
 
 
@@ -377,7 +378,7 @@ public class PlayerController : MonoBehaviour
 
             if (PlayerMesh.transform.localScale.x != side && _rb.velocity.y == 0)
             {
-                _particules.SendEvent("OnPlay");
+                //_particules.SendEvent("OnPlay");
             }
 
             PlayerMesh.transform.localScale = new Vector3(side, PlayerMesh.transform.localScale.y, PlayerMesh.transform.localScale.z);
