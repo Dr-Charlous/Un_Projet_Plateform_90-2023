@@ -31,6 +31,8 @@ public class Teleport : MonoBehaviour
         CanTeleportHere();
         CursorTeleport();
         Teleportation();
+
+        TpPoint.transform.rotation = Player.transform.rotation;
     }
 
     public void CanTeleportHere()
@@ -44,8 +46,6 @@ public class Teleport : MonoBehaviour
         {
             CanTeleport = true;
         }
-
-        TpPoint.transform.rotation = Player.transform.rotation;
     }
 
     public void CursorTeleport()
