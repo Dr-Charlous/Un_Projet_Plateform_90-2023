@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public AudioSource _audioSource2;
     public AudioClip _outSound;
     public AudioClip _punchSound;
+    public Animator _animator;
 
     private void Awake()
     {
@@ -27,6 +28,11 @@ public class Enemy : MonoBehaviour
     {
         if (collision.GetComponent<PlayerController>() == null || _timerValue > 0 || collision.transform.position.y < transform.position.y)
             return;
+
+        if (collision.GetComponent<PlayerController>() != null && _timerValue < 0)
+        {
+            _animator.SetTrigger("Hit");
+        }
 
         _audioSource1.clip = _outSound;
         _audioSource1.Play();
