@@ -15,6 +15,8 @@ public class MenuManager : MonoBehaviour
     public Vector3 _camEndPos;
     public string _nameSceneTraget;
     public Transition _transition;
+    public GameObject Cursor;
+    //public Texture2D _cursorTexture;
 
     private void Start()
     {
@@ -24,6 +26,15 @@ public class MenuManager : MonoBehaviour
     public void Update()
     {
         CamMove();
+
+        if (UnityEngine.Cursor.visible) 
+        {
+            UnityEngine.Cursor.visible = false;
+        }
+
+        Cursor.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Cursor.transform.position = new Vector3(Cursor.transform.position.x, Cursor.transform.position.y, 0);
+        //UnityEngine.Cursor.SetCursor(_cursorTexture, Vector2.zero, CursorMode.Auto);
     }
 
     void CamMove()

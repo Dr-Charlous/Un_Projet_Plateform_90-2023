@@ -488,7 +488,7 @@ MonoBehaviour:
   _physicsFriction: {fileID: 6200000, guid: e04890dc7a529604582bfb42453c496c, type: 2}
   _physicsNoFriction: {fileID: 6200000, guid: 5543467fd0c479a4b84f2cc0ad815a4b, type: 2}
   _shake: {fileID: 0}
-  _particules: {fileID: 2892353079252883949}
+  _particules: {fileID: 4324552455479403440}
   Rooms: {fileID: 0}
   _cam: {fileID: 0}
   _offSetCamFall: 10
@@ -5683,6 +5683,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
   _audioSource: {fileID: 5872842952700288474}
+  _animatorPlayer: {fileID: 4040207047064693626}
 --- !u!1 &7904024788726102942
 GameObject:
   m_ObjectHideFlags: 0
