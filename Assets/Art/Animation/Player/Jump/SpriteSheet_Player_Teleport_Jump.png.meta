@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b06c732265f267241b487023e98da44a
+guid: 953e355d9a41af6469834437c2ac78b0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpriteSheet_Player_Teleport_Idle_0
+      name: SpriteSheet_Player_Teleport_Jump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e54bfdcb2d76d649a950f2482b4ee78
-      internalID: -176247412
+      spriteID: 2f6f563b48b8b3943822df6a2efa1db8
+      internalID: -593331949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_Player_Teleport_Idle_1
+      name: SpriteSheet_Player_Teleport_Jump_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d510cadcfd96a244bacd1f375b0a1e6
-      internalID: 1197452331
+      spriteID: 3be0351287e5a7b42b44de490146f442
+      internalID: 2092290381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_Player_Teleport_Idle_2
+      name: SpriteSheet_Player_Teleport_Jump_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db6bb8bea39b22646b03130e4ec9876b
-      internalID: -1464725159
+      spriteID: ef6ae58a03116e1438b3cfb978c41e27
+      internalID: 1235822270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_Player_Teleport_Idle_3
+      name: SpriteSheet_Player_Teleport_Jump_3
       rect:
         serializedVersion: 2
         x: 96
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21a0cea484c27b4408bde866594735ad
-      internalID: 1795789799
+      spriteID: e59138715318bb84594e2168a950d58d
+      internalID: 2122925248
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_Player_Teleport_Idle_4
+      name: SpriteSheet_Player_Teleport_Jump_4
       rect:
         serializedVersion: 2
         x: 128
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8153821c5d219f4488dfd89af645c8ba
-      internalID: -1825123358
+      spriteID: 88184912945c513469b1decc8153924b
+      internalID: 952786535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_Player_Teleport_Idle_5
+      name: SpriteSheet_Player_Teleport_Jump_5
       rect:
         serializedVersion: 2
         x: 160
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a16db13cd12585498b504b541359cbb
-      internalID: 1917787998
+      spriteID: 73011bd148ab81d4db558842cf483610
+      internalID: -2100709542
       vertices: []
       indices: 
       edges: []
@@ -246,12 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SpriteSheet_Player_Teleport_Idle_0: -176247412
-      SpriteSheet_Player_Teleport_Idle_1: 1197452331
-      SpriteSheet_Player_Teleport_Idle_2: -1464725159
-      SpriteSheet_Player_Teleport_Idle_3: 1795789799
-      SpriteSheet_Player_Teleport_Idle_4: -1825123358
-      SpriteSheet_Player_Teleport_Idle_5: 1917787998
+      SpriteSheet_Player_Teleport_Jump_0: -593331949
+      SpriteSheet_Player_Teleport_Jump_1: 2092290381
+      SpriteSheet_Player_Teleport_Jump_2: 1235822270
+      SpriteSheet_Player_Teleport_Jump_3: 2122925248
+      SpriteSheet_Player_Teleport_Jump_4: 952786535
+      SpriteSheet_Player_Teleport_Jump_5: -2100709542
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
