@@ -7,6 +7,7 @@ using DG.Tweening;
 public class Starting : MonoBehaviour
 {
     public PlayerController Player;
+    public Ending _end;
     public GameObject Rooms;
     public Transform _cam;
     public Vector3 _beginPos;
@@ -48,6 +49,7 @@ public class Starting : MonoBehaviour
         Rooms.SetActive(true);
         SwitchPalyer();
         yield return new WaitForSeconds(3);
+        _end._active = true;
         Destroy(this);
     }
 }
