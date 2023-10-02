@@ -11,17 +11,8 @@ using Unity.VisualScripting;
 using System;
 using UnityEngine.Scripting;
 using DG.Tweening;
+using UnityEngine.Windows;
 
-[Serializable]
-public class Sound
-{
-    public AudioClip clip;
-    public bool loop;
-    [Range(0f, 1f)]
-    public float volume;
-    [Range(1f, 3f)]
-    public float pitch;
-}
 
 public class PlayerController : MonoBehaviour
 {
@@ -66,9 +57,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] AudioSource _audioSource;
-    [SerializeField] Sound _walkSound;
-    [SerializeField] Sound _jumpSound;
-    [SerializeField] Sound _hitGround;
+    [SerializeField] AudioClip _walkSound;
+    [SerializeField] AudioClip _jumpSound;
+    [SerializeField] AudioClip _hitGround;
 
     [Header("Idk")]
     [SerializeField] float _coyoteTime;
@@ -176,6 +167,11 @@ public class PlayerController : MonoBehaviour
             //{
             //    teleportationClick = false;
             //}
+        }
+        else
+        {
+            _inputs = Vector2.zero;
+            _rb.velocity = Vector2.zero;
         }
 
         if (UnityEngine.Cursor.visible)
@@ -411,18 +407,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void PlaySound(Sound _sound, AudioSource _audioSource)
+    public void PlaySound(AudioClip _sound, AudioSource _audioSource)
     {
-        if (_audioSource.isPlaying && _audioSource.clip == _sound.clip)
+        if (_audioSource.isPlaying && _audioSource.clip == _sound)
         {
             return;
         }
         else
         {
-            _audioSource.clip = _sound.clip;
-            _audioSource.loop = _sound.loop;
-            _audioSource.volume = _sound.volume;
-            _audioSource.pitch = _sound.pitch;
+            _audioSource.clip = _sound;
             _audioSource.Play();
         }
     }

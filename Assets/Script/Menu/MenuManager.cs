@@ -39,7 +39,7 @@ public class MenuManager : MonoBehaviour
 
     void CamMove()
     {
-        _cam.transform.position = Vector3.Lerp(_cam.transform.position, _camEndPos, _camSpeed * Time.deltaTime);
+        _cam.transform.position += Vector3.up * _camSpeed * Time.deltaTime;
 
         if (_cam.transform.position.y >= _camEndPos.y - 2)
         {

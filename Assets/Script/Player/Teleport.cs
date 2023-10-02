@@ -15,7 +15,7 @@ public class Teleport : MonoBehaviour
     public float TimeSinceTeleport;
     public bool CanTeleport;
     public LayerMask Layer;
-    public Sound _teleportSound;
+    public AudioClip _teleportSound;
     public AudioSource _audioSource;
     public Animator _animatorPlayer;
 
@@ -80,15 +80,18 @@ public class Teleport : MonoBehaviour
 
         if (Player.GetComponent<PlayerController>().teleportationClick && TimeSinceTeleport > CooldownTeleport && CanTeleport && Player.GetComponent<PlayerController>().NumberTeleport > 0)
         {
-            Player.transform.position = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y + 0.3f, gameObject.transform.position.z);
+            Player.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.3f, gameObject.transform.position.z);
             TimeSinceTeleport = 0;
             Player.GetComponent<PlayerController>().NumberTeleport -= 1;
             Player.GetComponent<PlayerController>().teleportationClick = false;
-
             Player.GetComponent<PlayerController>().PlaySound(_teleportSound, _audioSource);
 
             _animatorPlayer.SetBool("Hat", false);
             _animatorPlayer.SetTrigger("TP");
+        }
+        else if(Player.GetComponent<PlayerController>().teleportationClick)
+        {
+            Player.GetComponent<PlayerController>().teleportationClick = false;
         }
     }
 }
