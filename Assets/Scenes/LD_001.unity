@@ -85158,6 +85158,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2349185901592903548, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2892353079252883949, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: lengthInSec
       value: 0.5
