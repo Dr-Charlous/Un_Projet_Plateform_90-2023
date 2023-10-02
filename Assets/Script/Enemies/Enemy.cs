@@ -6,14 +6,12 @@ public class Enemy : MonoBehaviour
     public float Force = 10;
     public float Timer = 0.5f;
 
-    float _timerValue;
+    private float _timerValue;
 
-    public AudioSource _audioSource1;
-    public AudioSource _audioSource2;
-    public AudioClip _outSound;
+    public AudioSource _audioSource;
     public AudioClip _punchSound;
     public Animator _animator;
-    public Collider2D _collision;
+    private Collider2D _collision;
 
     private void Awake()
     {
@@ -43,8 +41,6 @@ public class Enemy : MonoBehaviour
     IEnumerator WaitPuch()
     {
         yield return new WaitForSeconds(0.1f);
-        _audioSource1.clip = _outSound;
-        _audioSource1.Play();
 
         _timerValue = Timer;
 
@@ -55,7 +51,7 @@ public class Enemy : MonoBehaviour
         var rb = _collision.GetComponent<Rigidbody2D>();
         rb.AddForce(direction * Force, ForceMode2D.Impulse);
 
-        _audioSource2.clip = _punchSound;
-        _audioSource2.Play();
+        _audioSource.clip = _punchSound;
+        _audioSource.Play();
     }
 }

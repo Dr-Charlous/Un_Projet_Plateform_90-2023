@@ -67513,10 +67513,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 8099372162376876974, guid: 06a74d9988c95414791d3d04c65441e1, type: 3}
-      propertyPath: Force
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -69621,10 +69617,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 8099372162376876974, guid: 06a74d9988c95414791d3d04c65441e1, type: 3}
-      propertyPath: Force
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -69958,7 +69950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4850585098076999372, guid: 06a74d9988c95414791d3d04c65441e1, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6369417915288637247, guid: 06a74d9988c95414791d3d04c65441e1, type: 3}
       propertyPath: m_Enabled
@@ -69969,10 +69961,11 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8099372162376876974, guid: 06a74d9988c95414791d3d04c65441e1, type: 3}
-      propertyPath: Force
-      value: 3
+      propertyPath: _audioSource2
+      value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6369417915288637247, guid: 06a74d9988c95414791d3d04c65441e1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -80315,10 +80308,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8099372162376876974, guid: 06a74d9988c95414791d3d04c65441e1, type: 3}
-      propertyPath: Force
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -84191,46 +84180,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 52674048}
     - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _gravity
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _cursor.x
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _cursor.y
-      value: -16.750006
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _walkSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _activeOrNot
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _timerNoJump
-      value: -20.900288
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _acceleration
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _gravityUpJump
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _TimeSinceGrounded
-      value: 20.900288
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _timerSinceJumpPressed
-      value: 20.900288
-      objectReference: {fileID: 0}
-    - target: {fileID: 94867500214886557, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: _collidersGround.Array.data[0]
       value: 
       objectReference: {fileID: 711170802}
@@ -85172,7 +85121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5872842952700288474, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8557796302881895984, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: m_IsActive
@@ -85572,10 +85521,6 @@ PrefabInstance:
     - target: {fileID: 7590019042417274457, guid: 06a74d9988c95414791d3d04c65441e1, type: 3}
       propertyPath: m_Name
       value: Enemy (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8099372162376876974, guid: 06a74d9988c95414791d3d04c65441e1, type: 3}
-      propertyPath: Force
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -88533,10 +88478,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 8099372162376876974, guid: 06a74d9988c95414791d3d04c65441e1, type: 3}
-      propertyPath: Force
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -88889,10 +88830,6 @@ PrefabInstance:
     - target: {fileID: 7590019042417274457, guid: 06a74d9988c95414791d3d04c65441e1, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8099372162376876974, guid: 06a74d9988c95414791d3d04c65441e1, type: 3}
-      propertyPath: Force
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

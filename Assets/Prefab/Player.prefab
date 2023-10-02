@@ -209,11 +209,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputs: {x: 0, y: 0}
-  _activeOrNot: 0
+  _activeOrNot: 1
   _inputJump: 0
   _rb: {fileID: 7100082430801691380}
-  _walkSpeed: 11
-  _acceleration: 10
+  _walkSpeed: 10
+  _acceleration: 20
   _groundOffset: -0.8
   _groundRadius: 0.38
   _GroundLayer:
@@ -452,35 +452,23 @@ MonoBehaviour:
   _timerMinBetweenJump: 0.1
   _jumpForce: 10
   _velocityFallMin: -11
-  _gravityUpJump: 0.8
-  _gravity: 2.5
+  _gravityUpJump: 1
+  _gravity: 3
   _jumpInputTimer: 0.5
-  _timerNoJump: 0
-  _timerSinceJumpPressed: 0
-  _TimeSinceGrounded: 0
+  _timerNoJump: -20.900288
+  _timerSinceJumpPressed: 20.900288
+  _TimeSinceGrounded: 20.900288
   _TimeSinceNotGrounded: 0
   NumberTeleport: 1
   _teleport: {fileID: 2147132678905996320}
   teleportationClick: 0
-  _cursor: {x: 0, y: 0}
+  _cursor: {x: -20, y: -16.750006}
   IsGamepad: 0
   PlayerMesh: {fileID: 5920966941673976110}
   _audioSource: {fileID: 5872842952700288474}
-  _walkSound:
-    clip: {fileID: 0}
-    loop: 0
-    volume: 1
-    pitch: 1
-  _jumpSound:
-    clip: {fileID: 8300000, guid: db7d412cab9ab1c469d9ad21bd13c277, type: 3}
-    loop: 0
-    volume: 1
-    pitch: 1
-  _hitGround:
-    clip: {fileID: 8300000, guid: e3523f690cd9d364ba5cfd507596633e, type: 3}
-    loop: 0
-    volume: 1
-    pitch: 1
+  _walkSound: {fileID: 8300000, guid: 84a3d8d747c37b04f986834c02e79d1d, type: 3}
+  _jumpSound: {fileID: 8300000, guid: db7d412cab9ab1c469d9ad21bd13c277, type: 3}
+  _hitGround: {fileID: 8300000, guid: 620c79bdfc6f34e4085007cea035178a, type: 3}
   _coyoteTime: 0.2
   _slopeDetectOffset: 0.5
   _isOnSlope: 0
@@ -5677,11 +5665,7 @@ MonoBehaviour:
   Layer:
     serializedVersion: 2
     m_Bits: 64
-  _teleportSound:
-    clip: {fileID: 0}
-    loop: 0
-    volume: 1
-    pitch: 1
+  _teleportSound: {fileID: 8300000, guid: 164032d59b399fc4da13e1b6f36a3032, type: 3}
   _audioSource: {fileID: 5872842952700288474}
   _animatorPlayer: {fileID: 4040207047064693626}
 --- !u!1 &7904024788726102942

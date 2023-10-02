@@ -17,10 +17,13 @@ public class MenuManager : MonoBehaviour
     public Transition _transition;
     public GameObject Cursor;
     //public Texture2D _cursorTexture;
+    public AudioSource _audioSource;
+    public AudioClip _audioClip;
 
     private void Start()
     {
         _cam.transform.position = _camBeginPos;
+        _audioSource.clip = _audioClip;
     }
 
     public void Update()
@@ -50,6 +53,12 @@ public class MenuManager : MonoBehaviour
     public void PlayButton(string nameScene)
     {
         _nameSceneTraget = nameScene;
+
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.Play();
+        }
+
         StartCoroutine(_transition.TimeAnimationEndMenu(true));
 
         if (_transition._animate)
@@ -63,8 +72,12 @@ public class MenuManager : MonoBehaviour
 
     public void QuitButton()
     {
-        StartCoroutine(_transition.TimeAnimationEndMenu(false));
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.Play();
+        }
 
+        StartCoroutine(_transition.TimeAnimationEndMenu(false));
 
         if (_transition._animate)
             return;
