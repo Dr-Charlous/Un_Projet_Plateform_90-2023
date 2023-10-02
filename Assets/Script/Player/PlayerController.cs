@@ -98,6 +98,11 @@ public class PlayerController : MonoBehaviour
         _input = new PlayerInputs();
     }
 
+    private void Start()
+    {
+        transform.position = new Vector3(0, -9.3f, 0);
+    }
+
     private void OnEnable()
     {
         _input.Enable();
@@ -167,10 +172,10 @@ public class PlayerController : MonoBehaviour
                 _cursor = Camera.main.ScreenToWorldPoint(_input.Player.CursorMouse.ReadValue<Vector2>());
             }
 
-            if (teleportationClick)
-            {
-                teleportationClick = false;
-            }
+            //if (teleportationClick)
+            //{
+            //    teleportationClick = false;
+            //}
         }
 
         if (UnityEngine.Cursor.visible)
