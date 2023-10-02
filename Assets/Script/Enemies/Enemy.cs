@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -12,6 +13,7 @@ public class Enemy : MonoBehaviour
     public AudioClip _outSound;
     public AudioClip _punchSound;
     public Animator _animator;
+    public Collider2D _collision;
 
     private void Awake()
     {
@@ -34,16 +36,23 @@ public class Enemy : MonoBehaviour
             _animator.SetTrigger("Hit");
         }
 
+        _collision = collision;
+        StartCoroutine(WaitPuch());
+    }
+
+    IEnumerator WaitPuch()
+    {
+        yield return new WaitForSeconds(0.1f);
         _audioSource1.clip = _outSound;
         _audioSource1.Play();
 
         _timerValue = Timer;
 
 
-        Vector2 direction = collision.transform.position - transform.position;
+        Vector2 direction = _collision.transform.position - transform.position;
         direction.Normalize();
 
-        var rb = collision.GetComponent<Rigidbody2D>();
+        var rb = _collision.GetComponent<Rigidbody2D>();
         rb.AddForce(direction * Force, ForceMode2D.Impulse);
 
         _audioSource2.clip = _punchSound;
