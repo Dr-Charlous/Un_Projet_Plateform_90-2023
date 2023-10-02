@@ -36314,8 +36314,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "HORRENBERGER\nRomain \nGD"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 967ea574d0275954e95b91105cd81350, type: 2}
+  m_sharedMaterial: {fileID: 8035937577058661313, guid: 967ea574d0275954e95b91105cd81350, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -36604,8 +36604,8 @@ MonoBehaviour:
 
     GD'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 967ea574d0275954e95b91105cd81350, type: 2}
+  m_sharedMaterial: {fileID: 8035937577058661313, guid: 967ea574d0275954e95b91105cd81350, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -36885,8 +36885,8 @@ MonoBehaviour:
 
     GA'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 967ea574d0275954e95b91105cd81350, type: 2}
+  m_sharedMaterial: {fileID: 8035937577058661313, guid: 967ea574d0275954e95b91105cd81350, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -37418,8 +37418,8 @@ MonoBehaviour:
 
     GA'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 967ea574d0275954e95b91105cd81350, type: 2}
+  m_sharedMaterial: {fileID: 8035937577058661313, guid: 967ea574d0275954e95b91105cd81350, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -37768,8 +37768,8 @@ MonoBehaviour:
 
     GP'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 967ea574d0275954e95b91105cd81350, type: 2}
+  m_sharedMaterial: {fileID: 8035937577058661313, guid: 967ea574d0275954e95b91105cd81350, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

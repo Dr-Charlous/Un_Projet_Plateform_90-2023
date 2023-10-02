@@ -14,6 +14,8 @@ public class Starting : MonoBehaviour
     public Vector3 _endPos;
     public float _speed;
     public float _timeToMove;
+    public Animator _animator;
+    public GameObject TextBegin;
 
     private void Start()
     {
@@ -48,8 +50,12 @@ public class Starting : MonoBehaviour
         yield return new WaitForSeconds(_timeToMove);
         Rooms.SetActive(true);
         SwitchPalyer();
-        yield return new WaitForSeconds(3);
         _end._active = true;
+        TextBegin.SetActive(true);
+        yield return new WaitForSeconds(5);
+        _animator.SetTrigger("End");
+        yield return new WaitForSeconds(2);
+        TextBegin.SetActive(false);
         Destroy(this);
     }
 }

@@ -32,8 +32,11 @@ public class Ending : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
             _active = false;
+            int day = (int)_score % 60;
+            int month = (int)_score / 60;
+            int year = month / 3600;
             textMeshProUGUI.text = $@"You took so much time that the mad sorcerer died before you come...
-You took 3 years 2 months 15 days {(int)_score/60} min and {(int)_score} sec";
+You took {year} years {month} months and {day} days";
             collision.gameObject.GetComponent<PlayerController>()._activeOrNot = false;
             Rooms.SetActive(false);
             Cursor.SetActive(false);
