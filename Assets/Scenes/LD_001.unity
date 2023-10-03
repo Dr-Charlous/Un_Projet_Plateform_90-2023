@@ -61813,8 +61813,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: You took so much time that the mad sorcerer died before you came...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 967ea574d0275954e95b91105cd81350, type: 2}
-  m_sharedMaterial: {fileID: 8035937577058661313, guid: 967ea574d0275954e95b91105cd81350, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8c2f31428c15639479c8c42457593f43, type: 2}
+  m_sharedMaterial: {fileID: 8869165571810866775, guid: 8c2f31428c15639479c8c42457593f43, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -83101,8 +83101,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "You found the legendary \n*toilet brush*"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 967ea574d0275954e95b91105cd81350, type: 2}
-  m_sharedMaterial: {fileID: 8035937577058661313, guid: 967ea574d0275954e95b91105cd81350, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8c2f31428c15639479c8c42457593f43, type: 2}
+  m_sharedMaterial: {fileID: 8869165571810866775, guid: 8c2f31428c15639479c8c42457593f43, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
