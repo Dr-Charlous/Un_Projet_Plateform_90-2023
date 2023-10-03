@@ -37520,7 +37520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cam: {fileID: 673226099}
-  _camSpeed: 2
+  _camSpeed: 3
   _camBeginPos: {x: 0.4, y: -52, z: -35}
   _camEndPos: {x: 0.4, y: 142, z: -35}
   _nameSceneTraget: LD_001
