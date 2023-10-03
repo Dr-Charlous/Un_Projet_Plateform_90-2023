@@ -85124,6 +85124,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5872842952700288474, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872842952700288474, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
