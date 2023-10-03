@@ -466,9 +466,9 @@ MonoBehaviour:
   IsGamepad: 0
   PlayerMesh: {fileID: 5920966941673976110}
   _audioSource: {fileID: 5872842952700288474}
-  _walkSound: {fileID: 8300000, guid: 84a3d8d747c37b04f986834c02e79d1d, type: 3}
+  _walkSound: {fileID: 8300000, guid: 76f2678175c482740a953ce9a96b246a, type: 3}
   _jumpSound: {fileID: 8300000, guid: db7d412cab9ab1c469d9ad21bd13c277, type: 3}
-  _hitGround: {fileID: 8300000, guid: 620c79bdfc6f34e4085007cea035178a, type: 3}
+  _hitGround: {fileID: 8300000, guid: d29dfcf275ca8264d83d3ab4d61cd72c, type: 3}
   _coyoteTime: 0.2
   _slopeDetectOffset: 0.5
   _isOnSlope: 0

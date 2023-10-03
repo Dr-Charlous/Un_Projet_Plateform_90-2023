@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 5104398671298400306}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &4850585098076999372
 AudioSource:
@@ -181,7 +181,7 @@ MonoBehaviour:
   Force: 3
   Timer: 2
   _audioSource: {fileID: 4850585098076999372}
-  _punchSound: {fileID: 8300000, guid: 620c79bdfc6f34e4085007cea035178a, type: 3}
+  _punchSound: {fileID: 8300000, guid: a2aa66a52c514054f827905f5d5665da, type: 3}
   _animator: {fileID: 6486339598432857109}
 --- !u!1 &7955257590158022575
 GameObject:
