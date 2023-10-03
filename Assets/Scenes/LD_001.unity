@@ -86738,8 +86738,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You enter the mad tower with the purpose to destroy the mad sorcerer who
-    destroy your village...
+  m_text: 'You enter the tower with the intent to destroy the mad sorcerer whom ruined
+    your village... '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 967ea574d0275954e95b91105cd81350, type: 2}
   m_sharedMaterial: {fileID: 8035937577058661313, guid: 967ea574d0275954e95b91105cd81350, type: 2}
