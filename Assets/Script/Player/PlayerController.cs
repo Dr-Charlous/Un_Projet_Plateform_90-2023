@@ -1,17 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.VFX;
-using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
-using UnityEngine.WSA;
-using Unity.VisualScripting;
-using System;
-using UnityEngine.Scripting;
 using DG.Tweening;
-using UnityEngine.Windows;
 
 
 public class PlayerController : MonoBehaviour
